@@ -54,7 +54,7 @@
         "dist"
     ],
     "dependencies": {
-        "es-toolkit": "^1.40.0",
+        "es-toolkit": "^1.44.0",
         "rollup-plugin-copy": "^3.5.0",
         "srvx": "~0.10.0",
         "ts-vista": "~0.2.3"
