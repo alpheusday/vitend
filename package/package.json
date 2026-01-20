@@ -1,0 +1,68 @@
+{
+    "name": "vitend",
+    "version": "0.1.0",
+    "description": "A library for backend development with Vite",
+    "keywords": [
+        "vite",
+        "plugin",
+        "backend",
+        "development",
+        "ts",
+        "typescript",
+        "js",
+        "javascript"
+    ],
+    "homepage": "https://github.com/alpheusday/vitend",
+    "bugs": "https://github.com/alpheusday/vitend/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alpheusday/vitend.git",
+        "directory": "package"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Alpheus",
+        "email": "contact@alphe.us"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        },
+        "./node": {
+            "types": "./dist/node.d.ts",
+            "import": "./dist/node.mjs",
+            "require": "./dist/node.js"
+        },
+        "./vite": {
+            "types": "./dist/vite.d.ts",
+            "import": "./dist/vite.mjs",
+            "require": "./dist/vite.js"
+        },
+        "./runtime": {
+            "types": "./dist/runtime.d.ts",
+            "import": "./dist/runtime.mjs",
+            "require": "./dist/runtime.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "dependencies": {
+        "es-toolkit": "^1.40.0",
+        "rollup-plugin-copy": "^3.5.0",
+        "srvx": "~0.10.0",
+        "ts-vista": "~0.2.3"
+    },
+    "devDependencies": {
+        "vite": "catalog:dev"
+    },
+    "peerDependencies": {
+        "vite": "catalog:peer"
+    }
+}

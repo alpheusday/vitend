@@ -1,0 +1,17 @@
+packages:
+    - ./package
+    - ./examples/*
+
+catalogs:
+    dev:
+        vite: 7.0.0
+    peer:
+        vite: ^7.0.0
+
+minimumReleaseAge: 1440
+
+minimumReleaseAgeExclude:
+    - "@apst/biome"
+    - "@apst/tsconfig"
+    - "@apst/tsdown"
+    - "ts-vista"
