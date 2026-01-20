@@ -12,3 +12,11 @@ updates:
               - "*"
       commit-message:
           prefix: "chore"
+      ignore:
+          # dep
+          - dependency-name: "es-toolkit"
+          - dependency-name: "rollup-plugin-copy"
+          - dependency-name: "srvx"
+          - dependency-name: "ts-vista"
+          # peer
+          - dependency-name: "vite"
