@@ -23,7 +23,9 @@ const createMiddleware = ({ vite, server }: CreateMiddlewareOptions) => {
         res: HTTP.ServerResponse,
         _next: Connect.NextFunction,
     ): Promise<void> => {
-        const isHttps: boolean = vite.config.server.https !== undefined;
+        const isHttps: boolean =
+            vite.config.server.https?.cert !== void 0 &&
+            vite.config.server.https?.key !== void 0;
 
         const protocol: string = `http${isHttps ? "s" : ""}`;
 
@@ -101,11 +103,15 @@ const devPlugin = (opts: ResolvedVitendOptions): Plugin => {
                 server: {
                     host: dev.host,
                     port: dev.port,
-                    https: {
-                        cert: https.cert,
-                        key: https.key,
-                        passphrase: https.passphrase,
-                    },
+                    ...(https.cert !== void 0 && https.key !== void 0
+                        ? {
+                              https: {
+                                  cert: https.cert,
+                                  key: https.key,
+                                  passphrase: https.passphrase,
+                              },
+                          }
+                        : {}),
                 },
             };
 
