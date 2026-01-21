@@ -6,9 +6,23 @@
 function defineServer(options): object;
 ```
 
-Defined in: [package/src/functions/define.ts:6](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/functions/define.ts#L6)
+Defined in: [package/src/functions/define.ts:20](https://github.com/alpheusday/vitend/blob/c5b143cbcac38e846d4ae7a90ad4c69970df75d3/package/src/functions/define.ts#L20)
 
 A function to define server options.
+
+### Example
+
+```ts
+// ./src/index.ts
+
+import { defineServer } from "vitend";
+
+export default defineServer({
+    fetch: (req: Request): Response => {
+        return new Response("Hello, World!");
+    },
+});
+```
 
 ## Parameters
 

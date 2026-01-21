@@ -6,9 +6,24 @@
 function vitend(options?): Plugin$1<any>[];
 ```
 
-Defined in: [package/src/vite/vitend.ts:20](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/vite/vitend.ts#L20)
+Defined in: [package/src/vite/vitend.ts:35](https://github.com/alpheusday/vitend/blob/c5b143cbcac38e846d4ae7a90ad4c69970df75d3/package/src/vite/vitend.ts#L35)
 
 The `vitend` plugin.
+
+### Example
+
+```ts
+// ./vite.config.ts
+
+import { defineConfig } from "vite";
+import { vitend } from "vitend/vite";
+
+export default defineConfig({
+    plugins: [
+        vitend(),
+    ],
+});
+```
 
 ## Parameters
 
