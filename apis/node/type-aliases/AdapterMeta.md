@@ -3,27 +3,9 @@
 # Type Alias: AdapterMeta
 
 ```ts
-type AdapterMeta = object;
+type AdapterMeta = _AdapterMeta;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/adapters/node.d.mts:60
+Defined in: package/src/@types/node.ts:20
 
-## Properties
-
-### \_\_fetchHandler?
-
-```ts
-optional __fetchHandler: FetchHandler;
-```
-
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/adapters/node.d.mts:62
-
-***
-
-### \_\_nodeHandler?
-
-```ts
-optional __nodeHandler: NodeHttpHandler;
-```
-
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/adapters/node.d.mts:61
+Adapter meta.

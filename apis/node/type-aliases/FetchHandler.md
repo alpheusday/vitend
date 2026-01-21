@@ -1,19 +1,11 @@
 [vitend](../../README.md) / [node](../README.md) / FetchHandler
 
-# Type Alias: FetchHandler()
+# Type Alias: FetchHandler
 
 ```ts
-type FetchHandler = (request) => Response | Promise<Response>;
+type FetchHandler = _FetchHandler;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:269
+Defined in: package/src/@types/node.ts:15
 
-## Parameters
-
-### request
-
-`Request`
-
-## Returns
-
-`Response` \| `Promise`\<`Response`\>
+Fetch handler based on Web API.

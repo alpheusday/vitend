@@ -3,9 +3,9 @@
 # Type Alias: VitendOptions
 
 ```ts
-type VitendOptions = Format<Partial<CompleteVitendOptions>>;
+type VitendOptions = Format<Partial<Omit<CompleteVitendOptions, "dev" | "build">> & object>;
 ```
 
-Defined in: [package/src/@types/options.ts:57](https://github.com/alpheusday/vitend/blob/5e90fba2ebec2a9a70aae9baa6b523b04f20fbae/package/src/@types/options.ts#L57)
+Defined in: [package/src/@types/options/default.ts:42](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/@types/options/default.ts#L42)
 
 Options for the `vitend` plugin.

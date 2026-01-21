@@ -1,19 +1,11 @@
 [vitend](../../README.md) / [index](../README.md) / ServerPlugin
 
-# Type Alias: ServerPlugin()
+# Type Alias: ServerPlugin
 
 ```ts
-type ServerPlugin = (server) => void;
+type ServerPlugin = _ServerPlugin;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:30
+Defined in: [package/src/@types/server.ts:40](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/@types/server.ts#L40)
 
-## Parameters
-
-### server
-
-`Server`
-
-## Returns
-
-`void`
+Server plugin for extending the server.

@@ -1,21 +1,11 @@
 [vitend](../../README.md) / [index](../README.md) / ServerHandler
 
-# Type Alias: ServerHandler()
+# Type Alias: ServerHandler
 
 ```ts
-type ServerHandler = (request) => MaybePromise<Response>;
+type ServerHandler = _ServerHandler;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:28
+Defined in: [package/src/@types/server.ts:20](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/@types/server.ts#L20)
 
-Web fetch compatible request handler
-
-## Parameters
-
-### request
-
-[`ServerRequest`](../interfaces/ServerRequest.md)
-
-## Returns
-
-`MaybePromise`\<`Response`\>
+Server handler based on Web API.

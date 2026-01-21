@@ -3,10 +3,10 @@
 # Function: defineServer()
 
 ```ts
-function defineServer(options): ServerOptions;
+function defineServer(options): object;
 ```
 
-Defined in: [package/src/functions/define.ts:6](https://github.com/alpheusday/vitend/blob/5e90fba2ebec2a9a70aae9baa6b523b04f20fbae/package/src/functions/define.ts#L6)
+Defined in: [package/src/functions/define.ts:6](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/functions/define.ts#L6)
 
 A function to define server options.
 
@@ -14,8 +14,242 @@ A function to define server options.
 
 ### options
 
-[`ServerOptions`](../interfaces/ServerOptions.md)
+#### bun?
+
+`Omit`\<`Options`\<`any`\>, `"fetch"`\>
+
+Bun server options
+
+**Docs**
+
+https://bun.sh/docs/api/http
+
+#### deno?
+
+`any`
+
+Deno server options
+
+**Docs**
+
+https://docs.deno.com/api/deno/~/Deno.serve
+
+#### error?
+
+`ErrorHandler`
+
+Handle lifecycle errors.
+
+**Note**
+
+This handler will set built-in Bun and Deno error handler.
+
+#### fetch
+
+`ServerHandler`
+
+The fetch handler handles incoming requests.
+
+#### gracefulShutdown?
+
+  \| `boolean`
+  \| \{
+  `forceTimeout?`: `number`;
+  `gracefulTimeout?`: `number`;
+\}
+
+Graceful shutdown on SIGINT and SIGTERM signals.
+
+Supported for Node.js, Deno and Bun runtimes.
+
+**Default**
+
+```ts
+true (disabled in test and ci environments)
+```
+
+#### middleware?
+
+`ServerMiddleware`[]
+
+Server middleware handlers to run before the main fetch handler.
+
+#### node?
+
+(ServerOptions\<...\> \| ServerOptions\<...\> \| ServerOptions\<...\>) & ListenOptions & \{ ...; \}
+
+Node.js server options.
+
+#### plugins?
+
+`ServerPlugin`[]
+
+Server plugins.
+
+#### reusePort?
+
+`boolean`
+
+Enabling this option allows multiple processes to bind to the same port, which is useful for load balancing.
+
+**Note:** Despite Node.js built-in behavior that has `exclusive` flag (opposite of `reusePort`) enabled by default, srvx uses non-exclusive mode for consistency.
+
+#### serviceWorker?
+
+\{
+  `scope?`: `string`;
+  `url?`: `string`;
+\}
+
+Service worker options
+
+#### serviceWorker.scope?
+
+`string`
+
+The scope of the service worker.
+
+#### serviceWorker.url?
+
+`string`
+
+The path to the service worker file to be registered.
+
+#### silent?
+
+`boolean`
+
+If set to `true`, server will not print the listening address.
 
 ## Returns
 
-[`ServerOptions`](../interfaces/ServerOptions.md)
+### bun?
+
+```ts
+optional bun: Omit<Options<any>, "fetch">;
+```
+
+Bun server options
+
+#### Docs
+
+https://bun.sh/docs/api/http
+
+### deno?
+
+```ts
+optional deno: any;
+```
+
+Deno server options
+
+#### Docs
+
+https://docs.deno.com/api/deno/~/Deno.serve
+
+### error?
+
+```ts
+optional error: ErrorHandler;
+```
+
+Handle lifecycle errors.
+
+#### Note
+
+This handler will set built-in Bun and Deno error handler.
+
+### fetch
+
+```ts
+fetch: ServerHandler;
+```
+
+The fetch handler handles incoming requests.
+
+### gracefulShutdown?
+
+```ts
+optional gracefulShutdown: 
+  | boolean
+  | {
+  forceTimeout?: number;
+  gracefulTimeout?: number;
+};
+```
+
+Graceful shutdown on SIGINT and SIGTERM signals.
+
+Supported for Node.js, Deno and Bun runtimes.
+
+#### Default
+
+```ts
+true (disabled in test and ci environments)
+```
+
+### middleware?
+
+```ts
+optional middleware: ServerMiddleware[];
+```
+
+Server middleware handlers to run before the main fetch handler.
+
+### node?
+
+```ts
+optional node: (ServerOptions<...> | ServerOptions<...> | ServerOptions<...>) & ListenOptions & { ...; };
+```
+
+Node.js server options.
+
+### plugins?
+
+```ts
+optional plugins: ServerPlugin[];
+```
+
+Server plugins.
+
+### reusePort?
+
+```ts
+optional reusePort: boolean;
+```
+
+Enabling this option allows multiple processes to bind to the same port, which is useful for load balancing.
+
+**Note:** Despite Node.js built-in behavior that has `exclusive` flag (opposite of `reusePort`) enabled by default, srvx uses non-exclusive mode for consistency.
+
+### serviceWorker?
+
+```ts
+optional serviceWorker: object;
+```
+
+Service worker options
+
+#### serviceWorker.scope?
+
+```ts
+optional scope: string;
+```
+
+The scope of the service worker.
+
+#### serviceWorker.url?
+
+```ts
+optional url: string;
+```
+
+The path to the service worker file to be registered.
+
+### silent?
+
+```ts
+optional silent: boolean;
+```
+
+If set to `true`, server will not print the listening address.

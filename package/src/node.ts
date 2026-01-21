@@ -3,7 +3,10 @@
  * @module node
  */
 
-export type { FetchHandler, NodeHttpHandler } from "srvx";
-export type { AdapterMeta } from "srvx/node";
+export type {
+    AdapterMeta,
+    FetchHandler,
+    NodeHttpHandler,
+} from "#/@types/node";
 
 export { toFetchHandler } from "srvx/node";

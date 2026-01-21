@@ -1,23 +1,11 @@
 [vitend](../../README.md) / [index](../README.md) / ServerMiddleware
 
-# Type Alias: ServerMiddleware()
+# Type Alias: ServerMiddleware
 
 ```ts
-type ServerMiddleware = (request, next) => Response | Promise<Response>;
+type ServerMiddleware = _ServerMiddleware;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:29
+Defined in: [package/src/@types/server.ts:30](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/@types/server.ts#L30)
 
-## Parameters
-
-### request
-
-[`ServerRequest`](../interfaces/ServerRequest.md)
-
-### next
-
-() => `Response` \| `Promise`\<`Response`\>
-
-## Returns
-
-`Response` \| `Promise`\<`Response`\>
+Server middleware for extending the server.

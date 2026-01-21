@@ -1,19 +1,11 @@
 [vitend](../../README.md) / [index](../README.md) / ErrorHandler
 
-# Type Alias: ErrorHandler()
+# Type Alias: ErrorHandler
 
 ```ts
-type ErrorHandler = (error) => Response | Promise<Response>;
+type ErrorHandler = _ErrorHandler;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:270
+Defined in: [package/src/@types/server.ts:25](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/@types/server.ts#L25)
 
-## Parameters
-
-### error
-
-`unknown`
-
-## Returns
-
-`Response` \| `Promise`\<`Response`\>
+Error handler for the server.

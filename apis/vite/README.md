@@ -8,6 +8,9 @@ Vite module
 
 | Type Alias | Description |
 | ------ | ------ |
+| [BuildOptions](type-aliases/BuildOptions.md) | Build server options. |
+| [DevOptions](type-aliases/DevOptions.md) | Development server options. |
+| [HttpsOptions](type-aliases/HttpsOptions.md) | HTTPS server options. |
 | [VitendOptions](type-aliases/VitendOptions.md) | Options for the `vitend` plugin. |
 
 ## Functions

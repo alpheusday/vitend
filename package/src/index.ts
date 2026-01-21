@@ -8,10 +8,9 @@ export type {
     Server,
     ServerHandler,
     ServerMiddleware,
+    ServerOptions,
     ServerPlugin,
     ServerRequest,
-} from "srvx";
-
-export type { ServerOptions } from "#/@types/server";
+} from "#/@types/server";
 
 export { defineServer } from "#/functions/define";

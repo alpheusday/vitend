@@ -3,7 +3,9 @@
 # Type Alias: NodeHttpHandler
 
 ```ts
-type NodeHttpHandler = NodeHttp1Handler | NodeHttp2Handler;
+type NodeHttpHandler = _NodeHttpHandler;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/\_chunks/types.d.mts:277
+Defined in: package/src/@types/node.ts:10
+
+Node HTTP handler based on Node.js implementation.

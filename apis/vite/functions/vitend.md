@@ -6,7 +6,7 @@
 function vitend(options?): Plugin$1<any>[];
 ```
 
-Defined in: [package/src/vite/vitend.ts:16](https://github.com/alpheusday/vitend/blob/5e90fba2ebec2a9a70aae9baa6b523b04f20fbae/package/src/vite/vitend.ts#L16)
+Defined in: [package/src/vite/vitend.ts:20](https://github.com/alpheusday/vitend/blob/fc2f32c25b6245fe4061a3d774e88fccab0cd913/package/src/vite/vitend.ts#L20)
 
 The `vitend` plugin.
 
@@ -14,7 +14,26 @@ The `vitend` plugin.
 
 ### options?
 
-#### copyPublicDir?
+#### build?
+
+\{
+  `copyPublicDir?`: `boolean`;
+  `host?`: `string`;
+  `https?`: \{
+     `cert?`: `string`;
+     `key?`: `string`;
+     `passphrase?`: `string`;
+  \};
+  `minify?`: `boolean`;
+  `outputDir?`: `string`;
+  `outputFile?`: `string`;
+  `port?`: `number`;
+  `publicDir?`: `string`;
+\}
+
+The options for the production server.
+
+#### build.copyPublicDir?
 
 `boolean`
 
@@ -25,6 +44,82 @@ into the directory with same name inside the output directory.
 
 By default, it is `false`.
 
+#### build.host?
+
+`string`
+
+The host for the production server.
+
+By default, it is `localhost`.
+
+#### build.https?
+
+\{
+  `cert?`: `string`;
+  `key?`: `string`;
+  `passphrase?`: `string`;
+\}
+
+HTTPS server options.
+
+#### build.https.cert?
+
+`string`
+
+File path or inlined TLS certificate in PEM format (required).
+
+#### build.https.key?
+
+`string`
+
+File path or inlined TLS private key in PEM format (required).
+
+#### build.https.passphrase?
+
+`string`
+
+Passphrase for the private key (optional).
+
+#### build.minify?
+
+`boolean`
+
+Whether to minify the output.
+
+By default, it is `false`.
+
+#### build.outputDir?
+
+`string`
+
+The output directory for the application.
+
+By default, it is `./dist`.
+
+#### build.outputFile?
+
+`string`
+
+The output file name for the application.
+
+By default, it is `index.js`.
+
+#### build.port?
+
+`number`
+
+The port number for the production server.
+
+By default, it is `3000`.
+
+#### build.publicDir?
+
+`string`
+
+The public directory for the application.
+
+By default, it is `./public`.
+
 #### cwd?
 
 `string`
@@ -33,6 +128,64 @@ The current working directory.
 
 By default, it is `process.cwd()`.
 
+#### dev?
+
+\{
+  `host?`: `string`;
+  `https?`: \{
+     `cert?`: `string`;
+     `key?`: `string`;
+     `passphrase?`: `string`;
+  \};
+  `port?`: `number`;
+\}
+
+The options for the development server.
+
+#### dev.host?
+
+`string`
+
+The host for the development server.
+
+By default, it is `localhost`.
+
+#### dev.https?
+
+\{
+  `cert?`: `string`;
+  `key?`: `string`;
+  `passphrase?`: `string`;
+\}
+
+HTTPS server options.
+
+#### dev.https.cert?
+
+`string`
+
+File path or inlined TLS certificate in PEM format (required).
+
+#### dev.https.key?
+
+`string`
+
+File path or inlined TLS private key in PEM format (required).
+
+#### dev.https.passphrase?
+
+`string`
+
+Passphrase for the private key (optional).
+
+#### dev.port?
+
+`number`
+
+The port number for the development server.
+
+By default, it is `3001`.
+
 #### entry?
 
 `string`
@@ -40,38 +193,6 @@ By default, it is `process.cwd()`.
 The entry file for the application.
 
 By default, it is `./src/index.ts` or `./src/index.js`.
-
-#### minify?
-
-`boolean`
-
-Whether to minify the output.
-
-By default, it is `false`.
-
-#### outputDir?
-
-`string`
-
-The output directory for the application.
-
-By default, it is `./dist`.
-
-#### outputFile?
-
-`string`
-
-The output file name for the application.
-
-By default, it is `index.js`.
-
-#### publicDir?
-
-`string`
-
-The public directory for the application.
-
-By default, it is `./public`.
 
 ## Returns
 

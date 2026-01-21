@@ -18,8 +18,8 @@ Converts a Node.js HTTP handler into a Fetch API handler.
 
 ### handler
 
-[`NodeHttpHandler`](../type-aliases/NodeHttpHandler.md) & [`AdapterMeta`](../type-aliases/AdapterMeta.md)
+`NodeHttpHandler` & `AdapterMeta`
 
 ## Returns
 
-[`FetchHandler`](../type-aliases/FetchHandler.md) & [`AdapterMeta`](../type-aliases/AdapterMeta.md)
+`FetchHandler` & `AdapterMeta`
