@@ -12,81 +12,6 @@ import type {
 import { toMerged } from "es-toolkit";
 import { serve } from "srvx";
 
-type GetServerURLOptions = {
-    vite: ViteDevServer;
-    req: Connect.IncomingMessage;
-};
-
-const getServerURL = ({ vite, req }: GetServerURLOptions): URL => {
-    const isHttps: boolean = vite.config.server.https !== undefined;
-
-    const protocol: string = `http${isHttps ? "s" : ""}`;
-
-    const host: string = process.env.HOST ?? "localhost";
-
-    const port: number = vite.config.server.port;
-
-    const path: string = req.url ?? "";
-
-    return new URL(`${protocol}://${host}:${port}${path}`);
-};
-
-type CreateRequestOptions = {
-    url: URL;
-    req: Connect.IncomingMessage;
-};
-
-const createRequest = ({ url, req }: CreateRequestOptions): Request => {
-    const body: Connect.IncomingMessage | undefined =
-        req.method !== "GET" && req.method !== "HEAD" ? req : void 0;
-
-    return new Request(url, {
-        method: req.method,
-        headers: req.headers as HeadersInit,
-        // @ts-expect-error
-        body,
-    });
-};
-
-type StreamResponseOptions = {
-    response: Response;
-    res: HTTP.ServerResponse;
-};
-
-const streamResponse = async ({
-    response,
-    res,
-}: StreamResponseOptions): Promise<void> => {
-    res.statusCode = response.status;
-
-    response.headers.forEach((value: string, key: string): void => {
-        res.setHeader(key, value);
-    });
-
-    if (!response.body) {
-        res.end();
-        return void 0;
-    }
-
-    const reader: ReadableStreamDefaultReader<Uint8Array<ArrayBuffer>> =
-        response.body.getReader();
-
-    const pump = async (): Promise<void> => {
-        const { done, value } = await reader.read();
-
-        if (done) {
-            res.end();
-            return void 0;
-        }
-
-        res.write(Buffer.from(value));
-
-        return pump();
-    };
-
-    await pump();
-};
-
 type CreateMiddlewareOptions = {
     vite: ViteDevServer;
     server: Server;
@@ -96,26 +21,63 @@ const createMiddleware = ({ vite, server }: CreateMiddlewareOptions) => {
     return async (
         req: Connect.IncomingMessage,
         res: HTTP.ServerResponse,
-        next: Connect.NextFunction,
+        _next: Connect.NextFunction,
     ): Promise<void> => {
-        const url: URL = getServerURL({
-            vite,
-            req,
+        const isHttps: boolean = vite.config.server.https !== undefined;
+
+        const protocol: string = `http${isHttps ? "s" : ""}`;
+
+        const host: string = process.env.HOST ?? "localhost";
+
+        const port: number = vite.config.server.port;
+
+        const path: string = req.url ?? "";
+
+        const url: URL = new URL(`${protocol}://${host}:${port}${path}`);
+
+        const body: Connect.IncomingMessage | undefined =
+            req.method !== "GET" && req.method !== "HEAD" ? req : void 0;
+
+        const request: Request = new Request(url, {
+            method: req.method,
+            headers: req.headers,
+            body,
+            duplex: "half",
+        } as RequestInit);
+
+        const response: Response = await server.fetch(request);
+
+        res.statusCode = response.status;
+
+        response.headers.forEach((value: string, key: string): void => {
+            res.setHeader(key, value);
         });
 
-        const request: Request = createRequest({
-            url,
-            req,
-        });
+        if (!response.body) {
+            res.end();
+            return void 0;
+        }
 
-        const response: Response | undefined = await server.fetch(request);
+        const reader: ReadableStreamDefaultReader<Uint8Array<ArrayBuffer>> =
+            response.body.getReader();
 
-        if (!response) return next();
+        const stream = async (): Promise<void> => {
+            try {
+                while (true) {
+                    const { done, value } = await reader.read();
 
-        await streamResponse({
-            response,
-            res,
-        });
+                    if (done) break;
+
+                    res.write(value);
+                }
+
+                res.end();
+            } catch {
+                res.end();
+            }
+        };
+
+        await stream();
     };
 };
 
