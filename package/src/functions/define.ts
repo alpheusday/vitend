@@ -1,4 +1,4 @@
-import type { ServerOptions } from "srvx";
+import type { ServerOptions } from "#/@types/server";
 
 /**
  * A function to define server options.

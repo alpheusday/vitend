@@ -1,6 +1,10 @@
 import type { Plugin } from "vite";
 
-import type { CompleteVitendOptions, VitendOptions } from "#/@types/options";
+import type { VitendOptions } from "#/@types/options/default";
+import type {
+    ResolvedBuildOptions,
+    ResolvedVitendOptions,
+} from "#/@types/options/resolved";
 
 import * as Path from "node:path";
 
@@ -14,7 +18,9 @@ import { devPlugin } from "#/vite/dev";
  * The `vitend` plugin.
  */
 const vitend = (options?: VitendOptions): Plugin[] => {
-    const opts: CompleteVitendOptions = createOptions(options);
+    const opts: ResolvedVitendOptions = createOptions(options);
+
+    const build: ResolvedBuildOptions = opts.build;
 
     return [
         devPlugin({
@@ -23,16 +29,16 @@ const vitend = (options?: VitendOptions): Plugin[] => {
         buildPlugin({
             ...opts,
         }),
-        ...(opts?.copyPublicDir
+        ...(build?.copyPublicDir
             ? [
                   copy({
                       hook: "closeBundle",
                       targets: [
                           {
-                              src: Path.resolve(opts.publicDir, "**", "*"),
+                              src: Path.resolve(build.publicDir, "**", "*"),
                               dest: Path.resolve(
-                                  opts.outputDir,
-                                  opts.publicDir,
+                                  build.outputDir,
+                                  build.publicDir,
                               ),
                           },
                       ],

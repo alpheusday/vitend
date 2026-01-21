@@ -3,7 +3,11 @@ import type HTTP from "node:http";
 import type { Server, ServerHandler, ServerOptions } from "srvx";
 import type { Connect, Plugin, UserConfig, ViteDevServer } from "vite";
 
-import type { CompleteVitendOptions } from "#/@types/options";
+import type {
+    ResolvedDevOptions,
+    ResolvedHttpsOptions,
+    ResolvedVitendOptions,
+} from "#/@types/options/resolved";
 
 import { toMerged } from "es-toolkit";
 import { serve } from "srvx";
@@ -117,7 +121,10 @@ const createMiddleware = ({ vite, server }: CreateMiddlewareOptions) => {
 
 type Middleware = ReturnType<typeof createMiddleware>;
 
-const devPlugin = (opts: CompleteVitendOptions): Plugin => {
+const devPlugin = (opts: ResolvedVitendOptions): Plugin => {
+    const dev: ResolvedDevOptions = opts.dev;
+    const https: ResolvedHttpsOptions = opts.dev.https ?? {};
+
     return {
         name: "vitend/dev",
         apply: "serve",
@@ -130,7 +137,13 @@ const devPlugin = (opts: CompleteVitendOptions): Plugin => {
                     },
                 },
                 server: {
-                    port: config.server?.port ?? 3001,
+                    host: dev.host,
+                    port: dev.port,
+                    https: {
+                        cert: https.cert,
+                        key: https.key,
+                        passphrase: https.passphrase,
+                    },
                 },
             };
 
@@ -148,6 +161,13 @@ const devPlugin = (opts: CompleteVitendOptions): Plugin => {
                 ...serverOptions,
                 // override
                 manual: true,
+                hostname: dev.host,
+                port: dev.port,
+                tls: {
+                    cert: https.cert,
+                    key: https.key,
+                    passphrase: https.passphrase,
+                },
             });
 
             const middleware: Middleware = createMiddleware({

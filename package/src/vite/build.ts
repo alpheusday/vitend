@@ -1,7 +1,10 @@
 import type { LoadResult, ResolveIdResult } from "rollup";
 import type { Plugin, UserConfig } from "vite";
 
-import type { CompleteVitendOptions } from "#/@types/options";
+import type {
+    ResolvedBuildOptions,
+    ResolvedVitendOptions,
+} from "#/@types/options/resolved";
 import type { PackageJson } from "#/functions/package-json";
 
 import { builtinModules } from "node:module";
@@ -14,7 +17,9 @@ const VIRTUAL_ENTRY = "virtual:vitend-entry" as const;
 
 const VIRTUAL_ENTRY_RESOLVED = `\0${VIRTUAL_ENTRY}` as const;
 
-const buildPlugin = (opts: CompleteVitendOptions): Plugin => {
+const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
+    const build: ResolvedBuildOptions = opts.build;
+
     const packageJson: PackageJson = getPackageJson(opts.cwd);
 
     return {
@@ -39,11 +44,11 @@ const buildPlugin = (opts: CompleteVitendOptions): Plugin => {
             const overrideConfig: UserConfig = {
                 build: {
                     ssr: true,
-                    outDir: opts.outputDir,
+                    outDir: build.outputDir,
                     rollupOptions: {
                         input: VIRTUAL_ENTRY,
                         output: {
-                            entryFileNames: opts.outputFile,
+                            entryFileNames: build.outputFile,
                             format:
                                 packageJson.type === "module" ? "esm" : "cjs",
                         },
@@ -52,7 +57,7 @@ const buildPlugin = (opts: CompleteVitendOptions): Plugin => {
                             /^node:/,
                         ],
                     },
-                    minify: opts.minify,
+                    minify: build.minify,
                 },
             };
 
@@ -71,7 +76,23 @@ const buildPlugin = (opts: CompleteVitendOptions): Plugin => {
 
             code += `import app from "${opts.entry}";`;
             code += `import { serve } from "vitend/runtime";`;
-            code += `serve(app);`;
+            code += `serve({`;
+            code += `...app,`;
+
+            if (build.host !== "localhost")
+                code += `hostname: "${build.host}",`;
+            if (build.port !== 3000) code += `port: ${build.port},`;
+
+            if (build.https) {
+                code += `tls: {`;
+                if (build.https.cert) code += `cert: "${build.https.cert}",`;
+                if (build.https.key) code += `key: "${build.https.key}",`;
+                if (build.https.passphrase)
+                    code += `passphrase: "${build.https.passphrase}",`;
+                code += `},`;
+            }
+
+            code += `});`;
 
             return code;
         },

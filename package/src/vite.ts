@@ -3,6 +3,11 @@
  * @module vite
  */
 
-export type { VitendOptions } from "#/@types/options";
+export type {
+    BuildOptions,
+    DevOptions,
+    HttpsOptions,
+    VitendOptions,
+} from "#/@types/options/default";
 
 export { vitend } from "#/vite/vitend";
