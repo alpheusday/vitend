@@ -16,6 +16,21 @@ import { devPlugin } from "#/vite/dev";
 
 /**
  * The `vitend` plugin.
+ *
+ * ### Example
+ *
+ * ```ts
+ * // ./vite.config.ts
+ *
+ * import { defineConfig } from "vite";
+ * import { vitend } from "vitend/vite";
+ *
+ * export default defineConfig({
+ *     plugins: [
+ *         vitend(),
+ *     ],
+ * });
+ * ```
  */
 const vitend = (options?: VitendOptions): Plugin[] => {
     const opts: ResolvedVitendOptions = createOptions(options);
