@@ -129,6 +129,9 @@ const devPlugin = (opts: CompleteVitendOptions): Plugin => {
                         input: opts.entry,
                     },
                 },
+                server: {
+                    port: config.server?.port ?? 3001,
+                },
             };
 
             return toMerged(config, devConfig);
