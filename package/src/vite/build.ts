@@ -74,10 +74,30 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
 
             let code: string = "";
 
-            code += `import app from "${opts.entry}";`;
+            code += `import options from "${opts.entry}";`;
             code += `import { serve } from "vitend/runtime";`;
+
+            // vercel export
+
+            if (build.mode === "vercel") {
+                code += `const server = serve({`;
+                code += `...options,`;
+                code += `manual: true,`;
+                code += `});`;
+
+                code += `const handler = {`;
+                code += `fetch: server.fetch,`;
+                code += `};`;
+
+                code += `export default handler;`;
+
+                return code;
+            }
+
+            // default export
+
             code += `serve({`;
-            code += `...app,`;
+            code += `...options,`;
 
             if (build.host !== "localhost")
                 code += `hostname: "${build.host}",`;

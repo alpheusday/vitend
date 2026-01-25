@@ -1,8 +1,9 @@
 import type { Format, Omit } from "ts-vista";
 
 import type {
-    CompleteBuildOptions,
+    CompleteDefaultBuildOptions,
     CompleteDevOptions,
+    CompleteVercelBuildOptions,
     CompleteVitendOptions,
 } from "#/@types/options/complete";
 import type { HttpsOptions } from "#/@types/options/default";
@@ -25,16 +26,25 @@ type ResolvedDevOptions = Format<
 >;
 
 /**
- * Resolved build server options.
+ * Resolved default build server options.
  */
-type ResolvedBuildOptions = Format<
-    Omit<CompleteBuildOptions, "https"> & {
+type ResolvedDefaultBuildOptions = Format<
+    Omit<CompleteDefaultBuildOptions, "https"> & {
         /**
          * HTTPS server options.
          */
         https?: HttpsOptions;
     }
 >;
+
+/**
+ * Resolved vercel build server options.
+ */
+type ResolvedVercelBuildOptions = Format<CompleteVercelBuildOptions>;
+
+type ResolvedBuildOptions =
+    | ResolvedDefaultBuildOptions
+    | ResolvedVercelBuildOptions;
 
 /**
  * Resolved vitend options.
@@ -55,6 +65,8 @@ type ResolvedVitendOptions = Format<
 export type {
     ResolvedHttpsOptions,
     ResolvedDevOptions,
+    ResolvedDefaultBuildOptions,
+    ResolvedVercelBuildOptions,
     ResolvedBuildOptions,
     ResolvedVitendOptions,
 };

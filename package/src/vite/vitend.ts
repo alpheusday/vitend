@@ -44,7 +44,7 @@ const vitend = (options?: VitendOptions): Plugin[] => {
         buildPlugin({
             ...opts,
         }),
-        ...(build?.copyPublicDir
+        ...(build.mode === "default" && build.copyPublicDir
             ? [
                   copy({
                       hook: "closeBundle",

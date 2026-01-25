@@ -13,6 +13,7 @@ pkg := "package"
 vanilla := "examples/vanilla"
 express := "examples/express"
 hono := "examples/hono"
+vercel := "examples/vercel"
 
 # Default action
 _:
@@ -81,6 +82,19 @@ hono-build:
 # Start Hono production example
 hono-start:
     cd ./{{hono}} && pnpm start
+
+# Start Vercel example
+vercel:
+    cd ./{{vercel}} && pnpm dev
+
+# Build Vercel example
+vercel-build:
+    cd ./{{vercel}} && pnpm build
+
+# Start Vercel production example
+vercel-start:
+    cd ./{{vercel}} && pnpm start
+    cd ./{{vercel}} && pnpm build
 
 # Publish package with dev tag as dry-run
 publish-dev-try:

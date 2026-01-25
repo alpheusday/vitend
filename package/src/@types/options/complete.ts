@@ -39,9 +39,15 @@ type CompleteDevOptions = {
 };
 
 /**
- * Complete build server options.
+ * Complete default build server options.
  */
-type CompleteBuildOptions = {
+type CompleteDefaultBuildOptions = {
+    /**
+     * Build mode.
+     *
+     * By default, it is `default`.
+     */
+    mode: "default";
     /**
      * The host for the production server.
      *
@@ -94,6 +100,43 @@ type CompleteBuildOptions = {
 };
 
 /**
+ * Complete Vercel build server options.
+ */
+type CompleteVercelBuildOptions = {
+    /**
+     * Build mode.
+     *
+     * By default, it is `default`.
+     */
+    mode: "vercel";
+    /**
+     * The output directory for the application.
+     *
+     * By default, it is `./dist`.
+     */
+    outputDir: string;
+    /**
+     * The output file name for the application.
+     *
+     * By default, it is `index.js`.
+     */
+    outputFile: string;
+    /**
+     * Whether to minify the output.
+     *
+     * By default, it is `false`.
+     */
+    minify: boolean;
+};
+
+/**
+ * Complete build server options.
+ */
+type CompleteBuildOptions =
+    | CompleteDefaultBuildOptions
+    | CompleteVercelBuildOptions;
+
+/**
  * Complete options for the `vitend` plugin.
  */
 type CompleteVitendOptions = {
@@ -122,6 +165,8 @@ type CompleteVitendOptions = {
 export type {
     CompleteHttpsOptions,
     CompleteDevOptions,
+    CompleteDefaultBuildOptions,
+    CompleteVercelBuildOptions,
     CompleteBuildOptions,
     CompleteVitendOptions,
 };
