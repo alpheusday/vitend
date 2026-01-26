@@ -1,4 +1,10 @@
-## 0.1.1 (2025-01-21)
+## 0.2.0
+
+### What's New
+
+- add support for Vercel deployment
+
+## 0.1.1 (2026-01-21)
 
 ### What's Changed
 
@@ -6,4 +12,4 @@
 
 ## 0.1.0 (2026-01-21)
 
-First release
+first release
