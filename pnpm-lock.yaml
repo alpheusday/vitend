@@ -84,6 +84,19 @@ importers:
         specifier: catalog:dev
         version: 7.0.0(@types/node@25.0.10)(yaml@2.8.1)
 
+  examples/vercel:
+    dependencies:
+      hono:
+        specifier: ^4.11.4
+        version: 4.11.4
+      vitend:
+        specifier: workspace:*
+        version: link:../../package
+    devDependencies:
+      vite:
+        specifier: catalog:dev
+        version: 7.0.0(@types/node@25.0.10)(yaml@2.8.1)
+
   package:
     dependencies:
       es-toolkit:
@@ -2975,7 +2988,7 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
       postcss: 8.5.6
-      rollup: 4.55.1
+      rollup: 4.55.3
       tinyglobby: 0.2.15
     optionalDependencies:
       '@types/node': 25.0.10

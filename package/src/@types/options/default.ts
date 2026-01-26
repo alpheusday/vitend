@@ -1,9 +1,10 @@
 import type { Format, Omit, Partial } from "ts-vista";
 
 import type {
-    CompleteBuildOptions,
+    CompleteDefaultBuildOptions,
     CompleteDevOptions,
     CompleteHttpsOptions,
+    CompleteVercelBuildOptions,
     CompleteVitendOptions,
 } from "#/@types/options/complete";
 
@@ -28,12 +29,14 @@ type DevOptions = Format<
  * Build server options.
  */
 type BuildOptions = Format<
-    Partial<Omit<CompleteBuildOptions, "https">> & {
-        /**
-         * HTTPS server options.
-         */
-        https?: HttpsOptions;
-    }
+    | (Partial<Omit<CompleteDefaultBuildOptions, "https">> & {
+          /**
+           * HTTPS server options.
+           */
+          https?: HttpsOptions;
+      })
+    | (Pick<CompleteVercelBuildOptions, "target"> &
+          Partial<Omit<CompleteVercelBuildOptions, "target">>)
 >;
 
 /**
