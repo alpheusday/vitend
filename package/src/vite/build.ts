@@ -79,7 +79,7 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
 
             // vercel export
 
-            if (build.mode === "vercel") {
+            if (build.target === "vercel") {
                 code += `const server = serve({ ...options, manual: true });`;
                 code += `export default server;`;
 

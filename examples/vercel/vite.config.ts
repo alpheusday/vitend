@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [
         vitend({
             build: {
-                mode: "vercel",
+                target: "vercel",
             },
         }),
     ],

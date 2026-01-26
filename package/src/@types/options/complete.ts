@@ -43,11 +43,11 @@ type CompleteDevOptions = {
  */
 type CompleteDefaultBuildOptions = {
     /**
-     * Build mode.
+     * Build target.
      *
      * By default, it is `default`.
      */
-    mode: "default";
+    target: "default";
     /**
      * The host for the production server.
      *
@@ -104,11 +104,11 @@ type CompleteDefaultBuildOptions = {
  */
 type CompleteVercelBuildOptions = {
     /**
-     * Build mode.
+     * Build target.
      *
      * By default, it is `default`.
      */
-    mode: "vercel";
+    target: "vercel";
     /**
      * The output directory for the application.
      *

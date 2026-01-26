@@ -12,14 +12,14 @@ import { toMerged } from "es-toolkit";
 import { getEntry } from "#/functions/entry";
 
 const OPTIONS_BUILD_VERCEL: ResolvedVercelBuildOptions = {
-    mode: "vercel",
+    target: "vercel",
     outputDir: "./dist",
     outputFile: "index.js",
     minify: false,
 };
 
 const OPTIONS_BUILD_DEFAULT: ResolvedDefaultBuildOptions = {
-    mode: "default",
+    target: "default",
     host: "localhost",
     port: 3000,
     outputDir: "./dist",
@@ -29,21 +29,11 @@ const OPTIONS_BUILD_DEFAULT: ResolvedDefaultBuildOptions = {
     copyPublicDir: false,
 };
 
-const OPTIONS_DEFAULT: Omit<ResolvedVitendOptions, "entry"> = {
+const OPTIONS_DEFAULT: Omit<ResolvedVitendOptions, "entry" | "build"> = {
     cwd: process.cwd(),
     dev: {
         host: "localhost",
         port: 3001,
-    },
-    build: {
-        mode: "default",
-        host: "localhost",
-        port: 3000,
-        outputDir: "./dist",
-        outputFile: "index.js",
-        minify: false,
-        publicDir: "./public",
-        copyPublicDir: false,
     },
 };
 
@@ -57,7 +47,7 @@ const getDefaultOptions = (
 };
 
 const createOptions = (options?: VitendOptions): ResolvedVitendOptions => {
-    const isVercel: boolean = options?.build?.mode === "vercel";
+    const isVercel: boolean = options?.build?.target === "vercel";
 
     const merged = toMerged(getDefaultOptions(isVercel), options ?? {});
 

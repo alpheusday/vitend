@@ -35,8 +35,8 @@ type BuildOptions = Format<
            */
           https?: HttpsOptions;
       })
-    | (Pick<CompleteVercelBuildOptions, "mode"> &
-          Partial<Omit<CompleteVercelBuildOptions, "mode">>)
+    | (Pick<CompleteVercelBuildOptions, "target"> &
+          Partial<Omit<CompleteVercelBuildOptions, "target">>)
 >;
 
 /**
