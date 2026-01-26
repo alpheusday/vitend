@@ -6,7 +6,7 @@
 function vitend(options?): Plugin$1<any>[];
 ```
 
-Defined in: [package/src/vite/vitend.ts:35](https://github.com/alpheusday/vitend/blob/c5b143cbcac38e846d4ae7a90ad4c69970df75d3/package/src/vite/vitend.ts#L35)
+Defined in: [package/src/vite/vitend.ts:35](https://github.com/alpheusday/vitend/blob/1ce91ee871c6f7bf5bcf70030f8d976386117b14/package/src/vite/vitend.ts#L35)
 
 The `vitend` plugin.
 
@@ -31,109 +31,9 @@ export default defineConfig({
 
 #### build?
 
-\{
-  `copyPublicDir?`: `boolean`;
-  `host?`: `string`;
-  `https?`: \{
-     `cert?`: `string`;
-     `key?`: `string`;
-     `passphrase?`: `string`;
-  \};
-  `minify?`: `boolean`;
-  `outputDir?`: `string`;
-  `outputFile?`: `string`;
-  `port?`: `number`;
-  `publicDir?`: `string`;
-\}
+[`BuildOptions`](../type-aliases/BuildOptions.md)
 
 The options for the production server.
-
-#### build.copyPublicDir?
-
-`boolean`
-
-Whether to copy the public directory to the output directory.
-
-When this is `true`, the public directory will be copied
-into the directory with same name inside the output directory.
-
-By default, it is `false`.
-
-#### build.host?
-
-`string`
-
-The host for the production server.
-
-By default, it is `localhost`.
-
-#### build.https?
-
-\{
-  `cert?`: `string`;
-  `key?`: `string`;
-  `passphrase?`: `string`;
-\}
-
-HTTPS server options.
-
-#### build.https.cert?
-
-`string`
-
-File path or inlined TLS certificate in PEM format (required).
-
-#### build.https.key?
-
-`string`
-
-File path or inlined TLS private key in PEM format (required).
-
-#### build.https.passphrase?
-
-`string`
-
-Passphrase for the private key (optional).
-
-#### build.minify?
-
-`boolean`
-
-Whether to minify the output.
-
-By default, it is `false`.
-
-#### build.outputDir?
-
-`string`
-
-The output directory for the application.
-
-By default, it is `./dist`.
-
-#### build.outputFile?
-
-`string`
-
-The output file name for the application.
-
-By default, it is `index.js`.
-
-#### build.port?
-
-`number`
-
-The port number for the production server.
-
-By default, it is `3000`.
-
-#### build.publicDir?
-
-`string`
-
-The public directory for the application.
-
-By default, it is `./public`.
 
 #### cwd?
 
