@@ -6,7 +6,7 @@
 function toFetchHandler(handler): FetchHandler & AdapterMeta;
 ```
 
-Defined in: node\_modules/.pnpm/srvx@0.10.0/node\_modules/srvx/dist/adapters/node.d.mts:73
+Defined in: node\_modules/.pnpm/srvx@0.11.4/node\_modules/srvx/dist/adapters/node.d.mts:73
 
 **`Experimental`**
 

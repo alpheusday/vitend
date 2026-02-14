@@ -6,7 +6,7 @@
 function defineServer(options): object;
 ```
 
-Defined in: [package/src/functions/define.ts:20](https://github.com/alpheusday/vitend/blob/1ce91ee871c6f7bf5bcf70030f8d976386117b14/package/src/functions/define.ts#L20)
+Defined in: [package/src/functions/define.ts:20](https://github.com/alpheusday/vitend/blob/ce62a943649ae6da57fe6983bf9135199ad72979/package/src/functions/define.ts#L20)
 
 A function to define server options.
 
