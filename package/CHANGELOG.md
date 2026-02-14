@@ -1,3 +1,9 @@
+## 0.2.1
+
+### What's Changed
+
+- upgrade dependencies
+
 ## 0.2.0 (2026-01-26)
 
 ### What's New

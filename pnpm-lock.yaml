@@ -106,8 +106,8 @@ importers:
         specifier: ^3.5.0
         version: 3.5.0
       srvx:
-        specifier: ~0.10.0
-        version: 0.10.0
+        specifier: ~0.11.0
+        version: 0.11.4
       ts-vista:
         specifier: ~0.2.3
         version: 0.2.3
@@ -1503,8 +1503,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  srvx@0.10.0:
-    resolution: {integrity: sha512-NqIsR+wQCfkvvwczBh8J8uM4wTZx41K2lLSEp/3oMp917ODVVMtW5Me4epCmQ3gH8D+0b+/t4xxkUKutyhimTA==}
+  srvx@0.11.4:
+    resolution: {integrity: sha512-m/2p87bqWZ94xpRN06qNBwh0xq/D0dXajnvPDSHFqrTogxuTWYNP1UHz6Cf+oY7D+NPLY35TJAp4ESIKn0WArQ==}
     engines: {node: '>=20.16.0'}
     hasBin: true
 
@@ -2885,7 +2885,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  srvx@0.10.0: {}
+  srvx@0.11.4: {}
 
   statuses@2.0.2: {}
 
