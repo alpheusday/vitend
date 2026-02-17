@@ -1,12 +1,11 @@
 set shell := ["bash", "-cu"]
 set windows-shell := ["powershell"]
 
-node_bin := "./node_modules/.bin/"
-biome := node_bin + "biome"
-tsc := node_bin + "tsc"
-tsdown := node_bin + "tsdown"
-vitest := node_bin + "vitest"
-typedoc := node_bin + "typedoc"
+tsc := "pnpm exec tsc"
+biome := "pnpm exec biome"
+tsdown := "pnpm exec tsdown"
+vitest := "pnpm exec vitest"
+typedoc := "pnpm exec typedoc"
 
 pkg := "package"
 
@@ -14,6 +13,12 @@ vanilla := "examples/vanilla"
 express := "examples/express"
 hono := "examples/hono"
 vercel := "examples/vercel"
+
+dev := "pnpm dev"
+build := "pnpm build"
+start := "pnpm start"
+preview := "pnpm preview"
+publish := "pnpm publish"
 
 # Default action
 _:
@@ -27,90 +32,93 @@ i:
 
 # Lint with TypeScript Compiler
 tsc:
-    cd ./{{pkg}} && ../{{tsc}} --noEmit
+    cd ./{{pkg}} && {{tsc}} --noEmit
 
 # Lint code
 lint:
-    ls-lint
+    ls-lint -config ./.ls-lint.yaml
     typos
     just tsc
 
+# Lint code with Biome
+lint-biome:
+    {{biome}} lint .
+
 # Format code
 fmt:
-    ./{{biome}} check --write .
+    {{biome}} check --write .
 
 # Build package
 build:
-    cd ./{{pkg}} && ../{{tsdown}} -c tsdown.config.ts
+    cd ./{{pkg}} && {{tsdown}} -c tsdown.config.ts
 
 # Generate APIs documentation
 api:
-    cd ./{{pkg}} && ../{{typedoc}}
+    cd ./{{pkg}} && {{typedoc}}
 
 # Start Vanilla example
 vanilla:
-    cd ./{{vanilla}} && pnpm dev
+    cd ./{{vanilla}} && {{dev}}
 
 # Build Vanilla example
 vanilla-build:
-    cd ./{{vanilla}} && pnpm build
+    cd ./{{vanilla}} && {{build}}
 
 # Start Vanilla production example
 vanilla-start:
-    cd ./{{vanilla}} && pnpm start
+    cd ./{{vanilla}} && {{start}}
 
 # Start Express example
 express:
-    cd ./{{express}} && pnpm dev
+    cd ./{{express}} && {{dev}}
 
 # Build Express example
 express-build:
-    cd ./{{express}} && pnpm build
+    cd ./{{express}} && {{build}}
 
 # Start Express production example
 express-start:
-    cd ./{{express}} && pnpm start
+    cd ./{{express}} && {{start}}
 
 # Start Hono example
 hono:
-    cd ./{{hono}} && pnpm dev
+    cd ./{{hono}} && {{dev}}
 
 # Build Hono example
 hono-build:
-    cd ./{{hono}} && pnpm build
+    cd ./{{hono}} && {{build}}
 
 # Start Hono production example
 hono-start:
-    cd ./{{hono}} && pnpm start
+    cd ./{{hono}} && {{start}}
 
 # Start Vercel example
 vercel:
-    cd ./{{vercel}} && pnpm dev
+    cd ./{{vercel}} && {{dev}}
 
 # Build Vercel example
 vercel-build:
-    cd ./{{vercel}} && pnpm build
+    cd ./{{vercel}} && {{build}}
 
 # Start Vercel production example
 vercel-start:
-    cd ./{{vercel}} && pnpm start
-    cd ./{{vercel}} && pnpm build
+    cd ./{{vercel}} && {{start}}
 
 # Publish package with dev tag as dry-run
 publish-dev-try:
-    cd ./{{pkg}} && pnpm publish --no-git-checks --tag dev --dry-run
+    cd ./{{pkg}} && {{publish}} --no-git-checks --tag dev --dry-run
 
 # Publish package with dev tag
 publish-dev:
-    cd ./{{pkg}} && pnpm publish --no-git-checks --tag dev
+    cd ./{{pkg}} && {{publish}} --no-git-checks --tag dev
 
 # Publish package as dry-run
 publish-try:
-    cd ./{{pkg}} && pnpm publish --dry-run
+    cd ./{{pkg}} && {{publish}} --dry-run
 
 # Publish package
 publish:
-    cd ./{{pkg}} && pnpm publish
+    cd ./{{pkg}} && {{publish}}
 
 # Clean builds
 clean:
