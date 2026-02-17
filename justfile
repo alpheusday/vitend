@@ -30,13 +30,17 @@ _:
 i:
     pnpm install
 
+# Lint with ls-lint
+lslint:
+    ls-lint -config ./.ls-lint.yaml
+
 # Lint with TypeScript Compiler
 tsc:
     cd ./{{pkg}} && {{tsc}} --noEmit
 
 # Lint code
 lint:
-    ls-lint -config ./.ls-lint.yaml
+    just lslint
     typos
     just tsc
 
