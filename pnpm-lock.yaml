@@ -27,8 +27,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
       '@types/node':
-        specifier: ^25.2.3
-        version: 25.2.3
+        specifier: ^25.3.0
+        version: 25.3.0
       rollup:
         specifier: ^4.57.1
         version: 4.57.1
@@ -59,7 +59,7 @@ importers:
         version: 5.0.6
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.2.3)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.3.0)(yaml@2.8.2)
 
   examples/hono:
     dependencies:
@@ -72,7 +72,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.2.3)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.3.0)(yaml@2.8.2)
 
   examples/vanilla:
     dependencies:
@@ -82,7 +82,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.2.3)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.3.0)(yaml@2.8.2)
 
   examples/vercel:
     dependencies:
@@ -95,7 +95,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.2.3)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.3.0)(yaml@2.8.2)
 
   package:
     dependencies:
@@ -114,7 +114,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.2.3)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.3.0)(yaml@2.8.2)
 
 packages:
 
@@ -950,8 +950,8 @@ packages:
     resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
     deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
 
-  '@types/node@25.2.3':
-    resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
+  '@types/node@25.3.0':
+    resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
 
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
@@ -1615,8 +1615,8 @@ packages:
   unconfig-core@7.4.2:
     resolution: {integrity: sha512-VgPCvLWugINbXvMQDf8Jh0mlbvNjNC6eSUziHsBCMpxR05OPrNrvDnyatdMjRgcHaaNsCqz+wjNXxNw1kRLHUg==}
 
-  undici-types@7.16.0:
-    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
   universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
@@ -2190,17 +2190,17 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/estree@1.0.8': {}
 
   '@types/express-serve-static-core@5.1.0':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -2213,12 +2213,12 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -2232,9 +2232,9 @@ snapshots:
     dependencies:
       minimatch: 10.2.0
 
-  '@types/node@25.2.3':
+  '@types/node@25.3.0':
     dependencies:
-      undici-types: 7.16.0
+      undici-types: 7.18.2
 
   '@types/qs@6.14.0': {}
 
@@ -2242,12 +2242,12 @@ snapshots:
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
 
   '@types/unist@3.0.3': {}
 
@@ -3007,7 +3007,7 @@ snapshots:
       '@quansync/fs': 1.0.0
       quansync: 1.0.0
 
-  undici-types@7.16.0: {}
+  undici-types@7.18.2: {}
 
   universalify@0.1.2: {}
 
@@ -3021,7 +3021,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@7.0.0(@types/node@25.2.3)(yaml@2.8.2):
+  vite@7.0.0(@types/node@25.3.0)(yaml@2.8.2):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -3030,7 +3030,7 @@ snapshots:
       rollup: 4.56.0
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 25.2.3
+      '@types/node': 25.3.0
       fsevents: 2.3.3
       yaml: 2.8.2
 
