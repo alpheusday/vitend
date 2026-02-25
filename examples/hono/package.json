@@ -7,7 +7,7 @@
         "start": "node ./dist/index.js"
     },
     "dependencies": {
-        "hono": "^4.12.1",
+        "hono": "^4.12.2",
         "vitend": "workspace:*"
     },
     "devDependencies": {
