@@ -1,9 +1,11 @@
 {
+    "$schema": "https://raw.githubusercontent.com/vitejs/vite-plugin-registry/refs/heads/main/data/schema/extended-package-json.schema.json",
     "name": "vitend",
     "version": "0.2.1",
     "description": "A library for backend development with Vite",
     "keywords": [
         "vitend",
+        "vite-plugin",
         "vite",
         "plugin",
         "backend",
@@ -65,5 +67,12 @@
     },
     "peerDependencies": {
         "vite": "catalog:peer"
+    },
+    "compatiblePackages": {
+        "schemaVersion": 1,
+        "vite": {
+            "type": "compatible",
+            "versions": "^7.0.0 || ^8.0.0"
+        }
     }
 }
