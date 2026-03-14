@@ -6,7 +6,7 @@ export default defineConfig({
         vitend({
             build: {
                 copyPublicDir: true,
-            }
+            },
         }),
     ],
 });
