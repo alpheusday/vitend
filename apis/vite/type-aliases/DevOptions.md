@@ -6,6 +6,6 @@
 type DevOptions = Format<Partial<Omit<CompleteDevOptions, "https">> & object>;
 ```
 
-Defined in: [package/src/@types/options/default.ts:19](https://github.com/alpheusday/vitend/blob/ce62a943649ae6da57fe6983bf9135199ad72979/package/src/@types/options/default.ts#L19)
+Defined in: [package/src/@types/options/default.ts:19](https://github.com/alpheusday/vitend/blob/214ed2237f524a58ab3b0f0e24ec9ebf70a03269/package/src/@types/options/default.ts#L19)
 
 Development server options.
