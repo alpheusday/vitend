@@ -4,7 +4,9 @@ import { vitend } from "vitend/vite";
 export default defineConfig({
     plugins: [
         vitend({
-            copyPublicDir: true,
+            build: {
+                copyPublicDir: true,
+            }
         }),
     ],
 });
