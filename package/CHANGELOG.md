@@ -1,3 +1,10 @@
+## 0.2.2
+
+### What's Changed
+
+- add support for vite 8
+- update package metadata
+
 ## 0.2.1 (2026-02-14)
 
 ### What's Changed
