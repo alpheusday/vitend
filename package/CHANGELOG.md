@@ -1,3 +1,9 @@
+## Next
+
+### What's Changed
+
+- update package metadata
+
 ## 0.2.2 (2026-03-14)
 
 ### What's Changed

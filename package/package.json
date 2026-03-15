@@ -70,6 +70,14 @@
     },
     "compatiblePackages": {
         "schemaVersion": 1,
+        "rollup": {
+            "type": "incompatible",
+            "reason": "Uses Vite-specific APIs"
+        },
+        "rolldown": {
+            "type": "incompatible",
+            "reason": "Uses Vite-specific APIs"
+        },
         "vite": {
             "type": "compatible",
             "versions": "^7.0.0 || ^8.0.0"
