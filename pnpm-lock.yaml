@@ -27,8 +27,8 @@ importers:
         specifier: ^2.4.7
         version: 2.4.7
       '@types/node':
-        specifier: ^25.4.0
-        version: 25.4.0
+        specifier: ^25.5.0
+        version: 25.5.0
       rollup:
         specifier: ^4.59.0
         version: 4.59.0
@@ -59,7 +59,7 @@ importers:
         version: 5.0.6
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2)
 
   examples/hono:
     dependencies:
@@ -72,7 +72,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2)
 
   examples/vanilla:
     dependencies:
@@ -82,7 +82,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2)
 
   examples/vercel:
     dependencies:
@@ -95,7 +95,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2)
 
   package:
     dependencies:
@@ -114,7 +114,7 @@ importers:
     devDependencies:
       vite:
         specifier: catalog:dev
-        version: 7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2)
+        version: 7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2)
 
 packages:
 
@@ -826,8 +826,8 @@ packages:
     resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
     deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
 
-  '@types/node@25.4.0':
-    resolution: {integrity: sha512-9wLpoeWuBlcbBpOY3XmzSTG3oscB6xjBEEtn+pYXTfhyXhIxC5FsBer2KTopBlvKEiW9l13po9fq+SJY/5lkhw==}
+  '@types/node@25.5.0':
+    resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
 
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
@@ -2073,17 +2073,17 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/estree@1.0.8': {}
 
   '@types/express-serve-static-core@5.1.0':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -2096,12 +2096,12 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -2115,7 +2115,7 @@ snapshots:
     dependencies:
       minimatch: 10.2.0
 
-  '@types/node@25.4.0':
+  '@types/node@25.5.0':
     dependencies:
       undici-types: 7.18.2
 
@@ -2125,12 +2125,12 @@ snapshots:
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
 
   '@types/unist@3.0.3': {}
 
@@ -2928,7 +2928,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@7.0.0(@types/node@25.4.0)(lightningcss@1.32.0)(yaml@2.8.2):
+  vite@7.0.0(@types/node@25.5.0)(lightningcss@1.32.0)(yaml@2.8.2):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -2937,7 +2937,7 @@ snapshots:
       rollup: 4.59.0
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 25.4.0
+      '@types/node': 25.5.0
       fsevents: 2.3.3
       lightningcss: 1.32.0
       yaml: 2.8.2
