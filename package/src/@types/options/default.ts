@@ -55,4 +55,4 @@ type VitendOptions = Format<
     }
 >;
 
-export type { HttpsOptions, DevOptions, BuildOptions, VitendOptions };
+export type { BuildOptions, DevOptions, HttpsOptions, VitendOptions };

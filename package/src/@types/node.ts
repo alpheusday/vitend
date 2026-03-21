@@ -19,4 +19,4 @@ type FetchHandler = _FetchHandler;
  */
 type AdapterMeta = _AdapterMeta;
 
-export type { FetchHandler, NodeHttpHandler, AdapterMeta };
+export type { AdapterMeta, FetchHandler, NodeHttpHandler };

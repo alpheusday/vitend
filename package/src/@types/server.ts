@@ -47,11 +47,11 @@ type ServerOptions = Format<
 >;
 
 export type {
-    ServerRequest,
-    ServerHandler,
     ErrorHandler,
-    ServerMiddleware,
     Server,
-    ServerPlugin,
+    ServerHandler,
+    ServerMiddleware,
     ServerOptions,
+    ServerPlugin,
+    ServerRequest,
 };

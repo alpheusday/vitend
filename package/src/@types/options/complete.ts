@@ -163,10 +163,10 @@ type CompleteVitendOptions = {
 };
 
 export type {
-    CompleteHttpsOptions,
-    CompleteDevOptions,
-    CompleteDefaultBuildOptions,
-    CompleteVercelBuildOptions,
     CompleteBuildOptions,
+    CompleteDefaultBuildOptions,
+    CompleteDevOptions,
+    CompleteHttpsOptions,
+    CompleteVercelBuildOptions,
     CompleteVitendOptions,
 };

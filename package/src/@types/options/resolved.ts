@@ -63,10 +63,10 @@ type ResolvedVitendOptions = Format<
 >;
 
 export type {
-    ResolvedHttpsOptions,
-    ResolvedDevOptions,
-    ResolvedDefaultBuildOptions,
-    ResolvedVercelBuildOptions,
     ResolvedBuildOptions,
+    ResolvedDefaultBuildOptions,
+    ResolvedDevOptions,
+    ResolvedHttpsOptions,
+    ResolvedVercelBuildOptions,
     ResolvedVitendOptions,
 };
