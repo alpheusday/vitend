@@ -30,12 +30,12 @@ This command will install Node.js dependencies.
 just i
 ```
 
-### Default Command
+### Formatting
 
-This command will do linting, formatting and testing.
+This command will format the code.
 
 ```sh
-just
+just fmt
 ```
 
 ### Linting
@@ -46,20 +46,20 @@ This command will lint the code.
 just lint
 ```
 
-### Formatting
-
-This command will format the code.
-
-```sh
-just fmt
-```
-
 ### Building
 
 This command will build the code.
 
 ```sh
 just build
+```
+
+### Checking
+
+This command will do linting, formatting and building.
+
+```sh
+just check
 ```
 
 ### Cleaning
