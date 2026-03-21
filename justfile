@@ -7,6 +7,9 @@ tsdown := "pnpm exec tsdown"
 vitest := "pnpm exec vitest"
 typedoc := "pnpm exec typedoc"
 
+publish_dev := "pnpm publish --no-git-checks --tag dev --access public"
+publish := "pnpm publish --access public"
+
 pkg := "package"
 
 vanilla := "examples/vanilla"
@@ -18,7 +21,6 @@ dev := "pnpm dev"
 build := "pnpm build"
 start := "pnpm start"
 preview := "pnpm preview"
-publish := "pnpm publish"
 
 # Default action
 _:
@@ -28,27 +30,35 @@ _:
 i:
     pnpm install
 
-# Lint with ls-lint
-lslint:
+# Format code
+fmt:
+    {{biome}} check --write .
+
+# Lint code with ls-lint
+ls-lint:
     ls-lint -config ./.ls-lint.yaml
 
-# Lint with TypeScript Compiler
+# Lint code with ls-lint
+lslint:
+    just ls-lint
+
+# Lint code with typos-cli
+typos:
+    typos
+
+# Lint code with TypeScript Compiler
 tsc:
     cd ./{{pkg}} && {{tsc}} --noEmit
 
 # Lint code
 lint:
     just lslint
-    typos
+    just typos
     just tsc
 
 # Lint code with Biome
 lint-biome:
     {{biome}} lint .
-
-# Format code
-fmt:
-    {{biome}} check --write .
 
 # Build package
 build:
@@ -114,11 +124,11 @@ vercel-start:
 
 # Publish package with dev tag as dry-run
 publish-dev-try:
-    cd ./{{pkg}} && {{publish}} --no-git-checks --tag dev --dry-run
+    cd ./{{pkg}} && {{publish_dev}} --dry-run
 
 # Publish package with dev tag
 publish-dev:
-    cd ./{{pkg}} && {{publish}} --no-git-checks --tag dev
+    cd ./{{pkg}} && {{publish_dev}}
 
 # Publish package as dry-run
 publish-try:
