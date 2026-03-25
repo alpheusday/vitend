@@ -12,6 +12,8 @@ publish := "pnpm publish --access public"
 
 pkg := "package"
 
+tst := "test"
+
 vanilla := "examples/vanilla"
 express := "examples/express"
 hono := "examples/hono"
@@ -64,11 +66,16 @@ lint-biome:
 build:
     cd ./{{pkg}} && {{tsdown}} -c tsdown.config.ts
 
+# Test package
+test:
+    cd ./{{tst}} && {{vitest}} run
+
 # Check code
 check:
     just fmt
     just lint
     just build
+    just test
 
 # Generate APIs documentation
 api:
