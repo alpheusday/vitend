@@ -11,6 +11,7 @@ ignore:
     - "**/__MACOSX"
     - .DS_Store
     - "**/.DS_Store"
+    - .agents
     - node_modules
     - "**/node_modules"
     - dist
