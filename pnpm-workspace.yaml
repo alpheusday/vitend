@@ -1,8 +1,11 @@
 packages:
     - ./package
+    - ./test
     - ./examples/*
 
 catalogs:
+    dep:
+        srvx: ~0.11.0
     dev:
         vite: 7.0.0
     peer:

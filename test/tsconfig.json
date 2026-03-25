@@ -1,0 +1,16 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        "paths": {
+            "#/*": [
+                "./src/*"
+            ],
+            "#vitend/*": [
+                "../package/src/*"
+            ]
+        }
+    },
+    "include": [
+        "./src"
+    ]
+}

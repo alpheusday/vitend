@@ -59,7 +59,7 @@
     "dependencies": {
         "es-toolkit": "^1.40.0",
         "rollup-plugin-copy": "^3.5.0",
-        "srvx": "~0.11.0",
+        "srvx": "catalog:dep",
         "ts-vista": "~0.2.3"
     },
     "devDependencies": {
