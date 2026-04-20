@@ -23,10 +23,10 @@ importers:
         version: 0.3.1(@biomejs/biome@2.4.12)
       '@apst/tsconfig':
         specifier: ~0.3.0
-        version: 0.3.0(typescript@6.0.2)
+        version: 0.3.0(typescript@6.0.3)
       '@apst/tsdown':
         specifier: ~0.3.1
-        version: 0.3.1(tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.2))
+        version: 0.3.1(tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.3))
       '@biomejs/biome':
         specifier: ^2.4.12
         version: 2.4.12
@@ -38,16 +38,16 @@ importers:
         version: 4.60.1
       tsdown:
         specifier: ~0.21.8
-        version: 0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.2)
+        version: 0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.3)
       typedoc:
         specifier: ~0.28.19
-        version: 0.28.19(typescript@6.0.2)
+        version: 0.28.19(typescript@6.0.3)
       typedoc-plugin-markdown:
         specifier: ^4.11.0
-        version: 4.11.0(typedoc@0.28.19(typescript@6.0.2))
+        version: 4.11.0(typedoc@0.28.19(typescript@6.0.3))
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^6.0.3
+        version: 6.0.3
 
   examples/express:
     dependencies:
@@ -1817,8 +1817,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@6.0.2:
-    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1958,15 +1958,15 @@ snapshots:
     optionalDependencies:
       '@biomejs/biome': 2.4.12
 
-  '@apst/tsconfig@0.3.0(typescript@6.0.2)':
+  '@apst/tsconfig@0.3.0(typescript@6.0.3)':
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 6.0.3
 
-  '@apst/tsdown@0.3.1(tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.2))':
+  '@apst/tsdown@0.3.1(tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.3))':
     dependencies:
       es-toolkit: 1.45.1
     optionalDependencies:
-      tsdown: 0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.2)
+      tsdown: 0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.3)
 
   '@babel/generator@8.0.0-rc.3':
     dependencies:
@@ -3134,7 +3134,7 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rolldown-plugin-dts@0.23.2(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rolldown@1.0.0-rc.15)(typescript@6.0.2):
+  rolldown-plugin-dts@0.23.2(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rolldown@1.0.0-rc.15)(typescript@6.0.3):
     dependencies:
       '@babel/generator': 8.0.0-rc.3
       '@babel/helper-validator-identifier': 8.0.0-rc.3
@@ -3148,7 +3148,7 @@ snapshots:
       picomatch: 4.0.4
       rolldown: 1.0.0-rc.15
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 6.0.3
     transitivePeerDependencies:
       - oxc-resolver
 
@@ -3365,7 +3365,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.2):
+  tsdown@0.21.8(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(synckit@0.11.11)(typescript@6.0.3):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -3376,7 +3376,7 @@ snapshots:
       obug: 2.1.1
       picomatch: 4.0.4
       rolldown: 1.0.0-rc.15
-      rolldown-plugin-dts: 0.23.2(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rolldown@1.0.0-rc.15)(typescript@6.0.2)
+      rolldown-plugin-dts: 0.23.2(oxc-resolver@11.16.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rolldown@1.0.0-rc.15)(typescript@6.0.3)
       semver: 7.7.4
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
@@ -3384,7 +3384,7 @@ snapshots:
       unconfig-core: 7.5.0
       unrun: 0.2.35(synckit@0.11.11)
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 6.0.3
     transitivePeerDependencies:
       - '@ts-macro/tsc'
       - '@typescript/native-preview'
@@ -3401,23 +3401,23 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-plugin-markdown@4.11.0(typedoc@0.28.19(typescript@6.0.2)):
+  typedoc-plugin-markdown@4.11.0(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@6.0.2)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc@0.28.19(typescript@6.0.2):
+  typedoc@0.28.19(typescript@6.0.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.1.1
       minimatch: 10.2.5
-      typescript: 6.0.2
+      typescript: 6.0.3
       yaml: 2.8.3
 
   typescript@5.9.3:
     optional: true
 
-  typescript@6.0.2: {}
+  typescript@6.0.3: {}
 
   uc.micro@2.1.0: {}
 
