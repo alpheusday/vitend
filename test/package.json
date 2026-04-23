@@ -4,7 +4,7 @@
         "srvx": "catalog:dep",
         "vite": "catalog:dev",
         "vitend": "workspace:*",
-        "vitest": "^4.1.4"
+        "vitest": "^4.1.5"
     },
     "devDependencies": {
         "vite-tsconfig-paths": "^6.1.1"
