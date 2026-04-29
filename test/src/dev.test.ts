@@ -120,7 +120,7 @@ const createResponseRecorder = (): ResponseRecorder => {
 const createRequest = (
     method: string,
     url: string,
-    headers: Record<string, string>,
+    headers: HTTP.IncomingHttpHeaders,
     body?: string,
 ): Connect.IncomingMessage => {
     const stream: Readable = Readable.from(
@@ -244,6 +244,109 @@ describe("devPlugin", (): void => {
         });
         expect(state.chunks.join("")).toBe("hello world");
         expect(state.ended).toBe(true);
+    });
+
+    it("should ignores symbol keyed request header metadata", async (): Promise<void> => {
+        const sensitiveHeaders: unique symbol = Symbol("sensitiveHeaders");
+
+        const headers: HTTP.IncomingHttpHeaders = {
+            accept: "text/plain",
+        };
+
+        Object.defineProperty(headers, sensitiveHeaders, {
+            enumerable: true,
+            value: [
+                "authorization",
+            ],
+        });
+
+        let capturedRequest: Request | undefined;
+
+        const serverOptions: ServerOptions = {
+            fetch: (request: Request): Response => {
+                capturedRequest = request;
+
+                return new Response("ok");
+            },
+        };
+
+        const plugin: Plugin = devPlugin(createOptions());
+
+        const { vite, capture } = createViteDevServer(serverOptions, {
+            server: {
+                port: 5173,
+            },
+        });
+
+        if (!plugin.configureServer) {
+            throw new Error("Expected configureServer to be defined");
+        }
+
+        await plugin.configureServer(vite);
+
+        const { response } = createResponseRecorder();
+
+        const request: Connect.IncomingMessage = createRequest(
+            "GET",
+            "/headers",
+            headers,
+        );
+
+        await expect(
+            capture.middleware(request, response, (): void => void 0),
+        ).resolves.toBeUndefined();
+
+        expect(capturedRequest?.headers.get("accept")).toBe("text/plain");
+    });
+
+    it("should ignores http2 pseudo request headers", async (): Promise<void> => {
+        let capturedRequest: Request | undefined;
+
+        const serverOptions: ServerOptions = {
+            fetch: (request: Request): Response => {
+                capturedRequest = request;
+
+                return new Response("ok");
+            },
+        };
+
+        const plugin: Plugin = devPlugin(createOptions());
+
+        const { vite, capture } = createViteDevServer(serverOptions, {
+            server: {
+                port: 5173,
+            },
+        });
+
+        if (!plugin.configureServer) {
+            throw new Error("Expected configureServer to be defined");
+        }
+
+        await plugin.configureServer(vite);
+
+        const { response } = createResponseRecorder();
+
+        const request: Connect.IncomingMessage = createRequest(
+            "GET",
+            "/headers",
+            {
+                ":method": "GET",
+                ":path": "/headers",
+                accept: "text/plain",
+            },
+        );
+
+        await expect(
+            capture.middleware(request, response, (): void => void 0),
+        ).resolves.toBeUndefined();
+
+        const headerKeys: string[] = [
+            ...(capturedRequest?.headers.keys() ?? []),
+        ];
+
+        expect(headerKeys).not.toContain(":method");
+        expect(headerKeys).not.toContain(":path");
+        expect(capturedRequest?.headers.get("accept")).toBe("text/plain");
     });
 
     it("should proxies request bodies and https metadata for non-GET requests", async (): Promise<void> => {
