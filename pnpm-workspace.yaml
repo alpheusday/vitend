@@ -3,6 +3,12 @@ packages:
     - ./test
     - ./examples/*
 
+autoInstallPeers: false
+strictPeerDependencies: false
+
+allowBuilds:
+    esbuild: true
+
 catalogs:
     dep:
         srvx: ~0.11.0
