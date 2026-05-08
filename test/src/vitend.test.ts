@@ -60,7 +60,7 @@ describe("vitend", (): void => {
         expect(plugins.map((plugin: Plugin): string => plugin.name)).toEqual([
             "vitend/dev",
             "vitend/build",
-            "copy",
+            "rolldown-plugin-copy",
         ]);
     });
 

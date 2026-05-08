@@ -8,7 +8,7 @@ import type {
 
 import * as Path from "node:path";
 
-import copy from "rollup-plugin-copy";
+import { copy } from "rolldown-plugin-copy";
 
 import { createOptions } from "#/functions/options";
 import { buildPlugin } from "#/vite/build";
@@ -47,7 +47,6 @@ const vitend = (options?: VitendOptions): Plugin[] => {
         ...(build.target === "default" && build.copyPublicDir
             ? ([
                   copy({
-                      hook: "closeBundle",
                       targets: [
                           {
                               src: Path.resolve(build.publicDir, "**", "*"),

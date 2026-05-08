@@ -23,4 +23,5 @@ minimumReleaseAgeExclude:
     - "@apst/biome"
     - "@apst/tsconfig"
     - "@apst/tsdown"
+    - "rolldown-plugin-copy"
     - "ts-vista"
