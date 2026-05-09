@@ -4,6 +4,10 @@
 
 - adopt `rolldown-plugin-copy` for copying public assets
 
+### What's Changed
+
+- update documentation
+
 ## 0.2.3 (2026-04-29)
 
 ### What's Changed
