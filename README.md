@@ -34,6 +34,8 @@ bun add vitend
 Add the Vitend plugin into the Vite config:
 
 ```ts
+// ./vite.config.ts
+
 import { defineConfig } from "vite";
 import { vitend } from "vitend/vite";
 
@@ -44,9 +46,69 @@ export default defineConfig({
 });
 ```
 
-Export the application:
+For deploying to Vercel, add the `vercel` target:
 
 ```ts
+// ./vite.config.ts
+
+import { defineConfig } from "vite";
+import { vitend } from "vitend/vite";
+
+export default defineConfig({
+    plugins: [
+        vitend({
+            build: {
+                target: "vercel",
+            }
+        }),
+    ],
+});
+```
+
+For framework built on top of Web APIs, it is possible to directly export the application:
+
+```ts
+// ./src/index.ts
+
+import { Hono } from "hono";
+
+const app: Hono = new Hono();
+
+app.get("/", (c: Context): Response => {
+    return c.json({
+        success: true,
+    });
+});
+
+export default app;
+```
+
+Or use the `defineServer` function to wrap the application for type-safety on more advanced options:
+
+```ts
+// ./src/index.ts
+
+import { Hono } from "hono";
+import { defineServer } from "vitend";
+
+const app: Hono = new Hono();
+
+app.get("/", (c: Context): Response => {
+    return c.json({
+        success: true,
+    });
+});
+
+export default defineServer({
+    fetch: app.fetch,
+});
+```
+
+In the same time, it is also possible for directly usage without a framework:
+
+```ts
+// ./src/index.ts
+
 export default {
     fetch: (req: Request): Response => {
         switch (new URL(req.url).pathname) {
@@ -61,7 +123,7 @@ export default {
 };
 ```
 
-Then run `vite` to start the server.
+After the configuration, run `vite` to start the server.
 
 ## APIs
 
