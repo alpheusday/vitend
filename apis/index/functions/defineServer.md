@@ -6,7 +6,7 @@
 function defineServer(options): object;
 ```
 
-Defined in: [package/src/functions/define.ts:20](https://github.com/alpheusday/vitend/blob/214ed2237f524a58ab3b0f0e24ec9ebf70a03269/package/src/functions/define.ts#L20)
+Defined in: [package/src/functions/define.ts:20](https://github.com/alpheusday/vitend/blob/f7bcd28f7a5a16e47ae930fac8863add9dec0214/package/src/functions/define.ts#L20)
 
 A function to define server options.
 
@@ -140,7 +140,7 @@ If set to `true`, server will not print the listening address.
 ### bun?
 
 ```ts
-optional bun: Omit<Options<any>, "fetch">;
+optional bun?: Omit<Options<any>, "fetch">;
 ```
 
 Bun server options
@@ -152,7 +152,7 @@ https://bun.sh/docs/api/http
 ### deno?
 
 ```ts
-optional deno: any;
+optional deno?: any;
 ```
 
 Deno server options
@@ -164,7 +164,7 @@ https://docs.deno.com/api/deno/~/Deno.serve
 ### error?
 
 ```ts
-optional error: ErrorHandler;
+optional error?: ErrorHandler;
 ```
 
 Handle lifecycle errors.
@@ -184,7 +184,7 @@ The fetch handler handles incoming requests.
 ### gracefulShutdown?
 
 ```ts
-optional gracefulShutdown: 
+optional gracefulShutdown?: 
   | boolean
   | {
   forceTimeout?: number;
@@ -205,7 +205,7 @@ true (disabled in test and ci environments)
 ### middleware?
 
 ```ts
-optional middleware: ServerMiddleware[];
+optional middleware?: ServerMiddleware[];
 ```
 
 Server middleware handlers to run before the main fetch handler.
@@ -213,7 +213,7 @@ Server middleware handlers to run before the main fetch handler.
 ### node?
 
 ```ts
-optional node: (ServerOptions<...> | ServerOptions<...> | ServerOptions<...>) & ListenOptions & { ...; };
+optional node?: (ServerOptions<...> | ServerOptions<...> | ServerOptions<...>) & ListenOptions & { ...; };
 ```
 
 Node.js server options.
@@ -221,7 +221,7 @@ Node.js server options.
 ### plugins?
 
 ```ts
-optional plugins: ServerPlugin[];
+optional plugins?: ServerPlugin[];
 ```
 
 Server plugins.
@@ -229,7 +229,7 @@ Server plugins.
 ### reusePort?
 
 ```ts
-optional reusePort: boolean;
+optional reusePort?: boolean;
 ```
 
 Enabling this option allows multiple processes to bind to the same port, which is useful for load balancing.
@@ -239,7 +239,7 @@ Enabling this option allows multiple processes to bind to the same port, which i
 ### serviceWorker?
 
 ```ts
-optional serviceWorker: object;
+optional serviceWorker?: object;
 ```
 
 Service worker options
@@ -247,7 +247,7 @@ Service worker options
 #### serviceWorker.scope?
 
 ```ts
-optional scope: string;
+optional scope?: string;
 ```
 
 The scope of the service worker.
@@ -255,7 +255,7 @@ The scope of the service worker.
 #### serviceWorker.url?
 
 ```ts
-optional url: string;
+optional url?: string;
 ```
 
 The path to the service worker file to be registered.
@@ -263,7 +263,7 @@ The path to the service worker file to be registered.
 ### silent?
 
 ```ts
-optional silent: boolean;
+optional silent?: boolean;
 ```
 
 If set to `true`, server will not print the listening address.
