@@ -1,3 +1,9 @@
+## Next
+
+### What's New
+
+- adopt `rolldown-plugin-copy` for copying public assets
+
 ## 0.2.3 (2026-04-29)
 
 ### What's Changed
