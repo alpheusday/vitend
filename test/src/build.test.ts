@@ -36,13 +36,13 @@ const createProject = (
         options: {
             cwd: project.cwd,
             entry,
+            runtime: "node",
             dev: {
                 host: "localhost",
                 port: 3001,
             },
             build: {
                 bundle: "external",
-                runtime: "node",
                 target: "default",
                 host: "localhost",
                 port: 3000,
@@ -101,7 +101,12 @@ describe("buildPlugin", (): void => {
             noExternal: [
                 "custom-package",
             ],
-            target: "webworker",
+            target: "node",
+            resolve: {
+                conditions: [
+                    "node",
+                ],
+            },
         });
         expect(build).toMatchObject({
             ssr: true,
@@ -188,7 +193,6 @@ describe("buildPlugin", (): void => {
             ...options,
             build: {
                 bundle: "external",
-                runtime: "node",
                 target: "vercel",
                 outputDir: "./api",
                 outputFile: "index.js",
@@ -208,36 +212,45 @@ describe("buildPlugin", (): void => {
         expect(code).not.toContain("tls:");
     });
 
-    it("should configures ssr.noExternal and resolve conditions when bundle is standalone with node runtime", (): void => {
+    it("should configures resolve conditions with node runtime", (): void => {
         const { options } = createProject({
             type: "module",
         });
 
         const plugin: Plugin = buildPlugin({
             ...options,
-            build: {
-                ...options.build,
-                bundle: "standalone",
-                runtime: "node",
-            },
+            runtime: "node",
         });
 
         const config = plugin.config?.({}) as UserConfig;
 
-        const ssr = config.ssr as SSROptions;
         const resolve = config.resolve as {
             conditions: string[];
         };
 
-        expect(ssr).toMatchObject({
-            noExternal: true,
-            target: "node",
-        });
-        expect(ssr).not.toHaveProperty("external");
         expect(resolve.conditions).toContain("node");
     });
 
-    it("should configures ssr.noExternal and resolve conditions when bundle is standalone with workerd runtime", (): void => {
+    it("should configures resolve conditions with workerd runtime", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin({
+            ...options,
+            runtime: "workerd",
+        });
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const resolve = config.resolve as {
+            conditions: string[];
+        };
+
+        expect(resolve.conditions).toContain("workerd");
+    });
+
+    it("should configures ssr.noExternal when bundle is standalone with node runtime", (): void => {
         const { options } = createProject({
             type: "module",
         });
@@ -247,26 +260,55 @@ describe("buildPlugin", (): void => {
             build: {
                 ...options.build,
                 bundle: "standalone",
-                runtime: "workerd",
             },
         });
 
         const config = plugin.config?.({}) as UserConfig;
 
         const ssr = config.ssr as SSROptions;
-        const resolve = config.resolve as {
-            conditions: string[];
-        };
 
         expect(ssr).toMatchObject({
             noExternal: true,
             target: "node",
+            resolve: {
+                conditions: [
+                    "node",
+                ],
+            },
         });
         expect(ssr).not.toHaveProperty("external");
-        expect(resolve.conditions).toContain("workerd");
     });
 
-    it("should configures ssr.external and ssr.target webworker when bundle is external", (): void => {
+    it("should configures ssr with webworker target and workerd conditions for workerd runtime", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin({
+            ...options,
+            runtime: "workerd",
+            build: {
+                ...options.build,
+                bundle: "standalone",
+            },
+        });
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const ssr = config.ssr as SSROptions;
+
+        expect(ssr).toMatchObject({
+            noExternal: true,
+            target: "webworker",
+            resolve: {
+                conditions: [
+                    "workerd",
+                ],
+            },
+        });
+    });
+
+    it("should configures ssr.external and ssr.target node when bundle is external with node runtime", (): void => {
         const { options } = createProject({
             type: "module",
         });
@@ -279,7 +321,37 @@ describe("buildPlugin", (): void => {
 
         expect(ssr).toMatchObject({
             external: true,
+            target: "node",
+            resolve: {
+                conditions: [
+                    "node",
+                ],
+            },
+        });
+    });
+
+    it("should configures ssr with webworker target and workerd conditions for workerd runtime with external bundle", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin({
+            ...options,
+            runtime: "workerd",
+        });
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const ssr = config.ssr as SSROptions;
+
+        expect(ssr).toMatchObject({
+            external: true,
             target: "webworker",
+            resolve: {
+                conditions: [
+                    "workerd",
+                ],
+            },
         });
     });
 });

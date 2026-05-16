@@ -12,6 +12,7 @@ import { builtinModules } from "node:module";
 import { toMerged } from "es-toolkit";
 
 import { getPackageJson } from "#/functions/package-json";
+import { getSsrTarget } from "#/functions/ssr";
 
 const VIRTUAL_ENTRY = "virtual:vitend-entry" as const;
 
@@ -28,36 +29,40 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
         config: (config: UserConfig): UserConfig => {
             let result: UserConfig = {};
 
-            let baseConfig: UserConfig = {};
+            let baseConfig: UserConfig = {
+                resolve: {
+                    conditions: [
+                        opts.runtime,
+                    ],
+                },
+                ssr: {
+                    target: getSsrTarget(opts.runtime),
+                    resolve: {
+                        conditions: [
+                            opts.runtime,
+                        ],
+                    },
+                },
+                build: {
+                    copyPublicDir: false,
+                },
+            };
 
             if (build.bundle === "external") {
-                baseConfig = {
+                baseConfig = toMerged(baseConfig, {
                     ssr: {
                         external: true,
                         noExternal: void 0,
-                        target: "webworker",
                     },
-                    build: {
-                        copyPublicDir: false,
-                    },
-                };
+                });
             }
 
             if (build.bundle === "standalone") {
-                baseConfig = {
-                    resolve: {
-                        conditions: [
-                            build.runtime,
-                        ],
-                    },
+                baseConfig = toMerged(baseConfig, {
                     ssr: {
                         noExternal: true,
-                        target: "node",
                     },
-                    build: {
-                        copyPublicDir: false,
-                    },
-                };
+                });
             }
 
             result = toMerged(baseConfig, config);

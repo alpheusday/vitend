@@ -39,7 +39,7 @@ type CompleteDevOptions = {
 };
 
 /**
- * Runtime target for bundled output.
+ * Runtime target for the application.
  *
  * - Node.js - `node`
  * - Deno - `deno`
@@ -66,12 +66,6 @@ type CompleteDefaultBuildOptions = {
      * By default, it is `default`.
      */
     target: "default";
-    /**
-     * Runtime target for bundled output.
-     *
-     * By default, it is `node`.
-     */
-    runtime: Runtime;
     /**
      * The host for the production server.
      *
@@ -140,12 +134,6 @@ type CompleteVercelBuildOptions = {
      */
     target: "vercel";
     /**
-     * Runtime target for bundled output.
-     *
-     * By default, it is `node`.
-     */
-    runtime: Runtime;
-    /**
      * Whether to bundle all dependencies into the output file.
      *
      * By default, it is `external`.
@@ -194,6 +182,12 @@ type CompleteVitendOptions = {
      * By default, it is `./src/index.ts` or `./src/index.js`.
      */
     entry: string;
+    /**
+     * Runtime target for the application.
+     *
+     * By default, it is `node`.
+     */
+    runtime: Runtime;
     /**
      * The options for the development server.
      */

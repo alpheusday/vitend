@@ -105,13 +105,13 @@ describe("createOptions", (): void => {
         expect(result).toEqual({
             cwd: project.cwd,
             entry,
+            runtime: "node",
             dev: {
                 host: "localhost",
                 port: 4100,
             },
             build: {
                 target: "default",
-                runtime: "node",
                 host: "0.0.0.0",
                 port: 3000,
                 bundle: "external",
@@ -141,13 +141,13 @@ describe("createOptions", (): void => {
         expect(result).toEqual({
             cwd: project.cwd,
             entry,
+            runtime: "node",
             dev: {
                 host: "localhost",
                 port: 3001,
             },
             build: {
                 target: "vercel",
-                runtime: "node",
                 bundle: "external",
                 outputDir: "./dist",
                 outputFile: "api.js",
@@ -178,21 +178,18 @@ describe("createOptions", (): void => {
             cwd: project.cwd,
         });
 
-        expect(result.build.runtime).toBe("node");
+        expect(result.runtime).toBe("node");
     });
 
-    it("should accepts custom runtime when bundling", (): void => {
+    it("should accepts custom runtime", (): void => {
         const project: TempDir = createProject();
         project.writeFile("src/index.ts");
 
         const result = createOptions({
             cwd: project.cwd,
-            build: {
-                bundle: "standalone",
-                runtime: "workerd",
-            },
+            runtime: "workerd",
         });
 
-        expect(result.build.runtime).toBe("workerd");
+        expect(result.runtime).toBe("workerd");
     });
 });

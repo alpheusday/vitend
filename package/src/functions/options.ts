@@ -13,7 +13,6 @@ import { getEntry } from "#/functions/entry";
 
 const OPTIONS_BUILD_DEFAULT: ResolvedDefaultBuildOptions = {
     target: "default",
-    runtime: "node",
     host: "localhost",
     port: 3000,
     bundle: "external",
@@ -26,7 +25,6 @@ const OPTIONS_BUILD_DEFAULT: ResolvedDefaultBuildOptions = {
 
 const OPTIONS_BUILD_VERCEL: ResolvedVercelBuildOptions = {
     target: "vercel",
-    runtime: "node",
     bundle: "external",
     outputDir: "./dist",
     outputFile: "index.js",
@@ -35,6 +33,7 @@ const OPTIONS_BUILD_VERCEL: ResolvedVercelBuildOptions = {
 
 const OPTIONS_DEFAULT: Omit<ResolvedVitendOptions, "entry" | "build"> = {
     cwd: process.cwd(),
+    runtime: "node",
     dev: {
         host: "localhost",
         port: 3001,

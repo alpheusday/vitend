@@ -12,6 +12,8 @@ import type {
 import { toMerged } from "es-toolkit";
 import { serve } from "srvx";
 
+import { getSsrTarget } from "#/functions/ssr";
+
 type CreateMiddlewareOptions = {
     vite: ViteDevServer;
     server: Server;
@@ -135,6 +137,19 @@ const devPlugin = (opts: ResolvedVitendOptions): Plugin => {
         apply: "serve",
         config(config: UserConfig): UserConfig {
             const devConfig: UserConfig = {
+                resolve: {
+                    conditions: [
+                        opts.runtime,
+                    ],
+                },
+                ssr: {
+                    target: getSsrTarget(opts.runtime),
+                    resolve: {
+                        conditions: [
+                            opts.runtime,
+                        ],
+                    },
+                },
                 build: {
                     ssr: true,
                     rollupOptions: {

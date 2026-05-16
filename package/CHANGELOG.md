@@ -2,7 +2,7 @@
 
 ### What's New
 
-- add `build.runtime` option
+- add `runtime` option
 - add `build.bundle` option
 
 ## 0.3.0 (2026-05-09)
