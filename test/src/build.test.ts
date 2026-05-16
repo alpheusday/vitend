@@ -41,6 +41,8 @@ const createProject = (
                 port: 3001,
             },
             build: {
+                bundle: "external",
+                runtime: "node",
                 target: "default",
                 host: "localhost",
                 port: 3000,
@@ -185,6 +187,8 @@ describe("buildPlugin", (): void => {
         const plugin = buildPlugin({
             ...options,
             build: {
+                bundle: "external",
+                runtime: "node",
                 target: "vercel",
                 outputDir: "./api",
                 outputFile: "index.js",
@@ -202,5 +206,80 @@ describe("buildPlugin", (): void => {
         expect(code).toContain("export default server;");
         expect(code).not.toContain("hostname:");
         expect(code).not.toContain("tls:");
+    });
+
+    it("should configures ssr.noExternal and resolve conditions when bundle is standalone with node runtime", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin({
+            ...options,
+            build: {
+                ...options.build,
+                bundle: "standalone",
+                runtime: "node",
+            },
+        });
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const ssr = config.ssr as SSROptions;
+        const resolve = config.resolve as {
+            conditions: string[];
+        };
+
+        expect(ssr).toMatchObject({
+            noExternal: true,
+            target: "node",
+        });
+        expect(ssr).not.toHaveProperty("external");
+        expect(resolve.conditions).toContain("node");
+    });
+
+    it("should configures ssr.noExternal and resolve conditions when bundle is standalone with workerd runtime", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin({
+            ...options,
+            build: {
+                ...options.build,
+                bundle: "standalone",
+                runtime: "workerd",
+            },
+        });
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const ssr = config.ssr as SSROptions;
+        const resolve = config.resolve as {
+            conditions: string[];
+        };
+
+        expect(ssr).toMatchObject({
+            noExternal: true,
+            target: "node",
+        });
+        expect(ssr).not.toHaveProperty("external");
+        expect(resolve.conditions).toContain("workerd");
+    });
+
+    it("should configures ssr.external and ssr.target webworker when bundle is external", (): void => {
+        const { options } = createProject({
+            type: "module",
+        });
+
+        const plugin: Plugin = buildPlugin(options);
+
+        const config = plugin.config?.({}) as UserConfig;
+
+        const ssr = config.ssr as SSROptions;
+
+        expect(ssr).toMatchObject({
+            external: true,
+            target: "webworker",
+        });
     });
 });

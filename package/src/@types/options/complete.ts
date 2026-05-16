@@ -39,6 +39,24 @@ type CompleteDevOptions = {
 };
 
 /**
+ * Runtime target for bundled output.
+ *
+ * - Node.js - `node`
+ * - Deno - `deno`
+ * - Bun - `bun`
+ * - Cloudflare Workers - `workerd`
+ */
+type Runtime = "node" | "deno" | "bun" | "workerd";
+
+/**
+ * Bundle mode.
+ *
+ * - `external` - keeps all dependencies external.
+ * - `standalone` - bundles all dependencies into the output file.
+ */
+type BundleMode = "external" | "standalone";
+
+/**
  * Complete default build server options.
  */
 type CompleteDefaultBuildOptions = {
@@ -48,6 +66,12 @@ type CompleteDefaultBuildOptions = {
      * By default, it is `default`.
      */
     target: "default";
+    /**
+     * Runtime target for bundled output.
+     *
+     * By default, it is `node`.
+     */
+    runtime: Runtime;
     /**
      * The host for the production server.
      *
@@ -64,6 +88,12 @@ type CompleteDefaultBuildOptions = {
      * HTTPS server options.
      */
     https: CompleteHttpsOptions;
+    /**
+     * Whether to bundle all dependencies into the output file.
+     *
+     * By default, it is `external`.
+     */
+    bundle: BundleMode;
     /**
      * The output directory for the application.
      *
@@ -109,6 +139,18 @@ type CompleteVercelBuildOptions = {
      * By default, it is `default`.
      */
     target: "vercel";
+    /**
+     * Runtime target for bundled output.
+     *
+     * By default, it is `node`.
+     */
+    runtime: Runtime;
+    /**
+     * Whether to bundle all dependencies into the output file.
+     *
+     * By default, it is `external`.
+     */
+    bundle: BundleMode;
     /**
      * The output directory for the application.
      *
@@ -163,10 +205,12 @@ type CompleteVitendOptions = {
 };
 
 export type {
+    BundleMode,
     CompleteBuildOptions,
     CompleteDefaultBuildOptions,
     CompleteDevOptions,
     CompleteHttpsOptions,
     CompleteVercelBuildOptions,
     CompleteVitendOptions,
+    Runtime,
 };

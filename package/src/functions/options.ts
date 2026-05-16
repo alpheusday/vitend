@@ -11,22 +11,26 @@ import { toMerged } from "es-toolkit";
 
 import { getEntry } from "#/functions/entry";
 
-const OPTIONS_BUILD_VERCEL: ResolvedVercelBuildOptions = {
-    target: "vercel",
-    outputDir: "./dist",
-    outputFile: "index.js",
-    minify: false,
-};
-
 const OPTIONS_BUILD_DEFAULT: ResolvedDefaultBuildOptions = {
     target: "default",
+    runtime: "node",
     host: "localhost",
     port: 3000,
+    bundle: "external",
     outputDir: "./dist",
     outputFile: "index.js",
     minify: false,
     publicDir: "./public",
     copyPublicDir: false,
+};
+
+const OPTIONS_BUILD_VERCEL: ResolvedVercelBuildOptions = {
+    target: "vercel",
+    runtime: "node",
+    bundle: "external",
+    outputDir: "./dist",
+    outputFile: "index.js",
+    minify: false,
 };
 
 const OPTIONS_DEFAULT: Omit<ResolvedVitendOptions, "entry" | "build"> = {

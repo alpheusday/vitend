@@ -28,16 +28,37 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
         config: (config: UserConfig): UserConfig => {
             let result: UserConfig = {};
 
-            const baseConfig: UserConfig = {
-                ssr: {
-                    external: true,
-                    noExternal: void 0,
-                    target: "webworker",
-                },
-                build: {
-                    copyPublicDir: false,
-                },
-            };
+            let baseConfig: UserConfig = {};
+
+            if (build.bundle === "external") {
+                baseConfig = {
+                    ssr: {
+                        external: true,
+                        noExternal: void 0,
+                        target: "webworker",
+                    },
+                    build: {
+                        copyPublicDir: false,
+                    },
+                };
+            }
+
+            if (build.bundle === "standalone") {
+                baseConfig = {
+                    resolve: {
+                        conditions: [
+                            build.runtime,
+                        ],
+                    },
+                    ssr: {
+                        noExternal: true,
+                        target: "node",
+                    },
+                    build: {
+                        copyPublicDir: false,
+                    },
+                };
+            }
 
             result = toMerged(baseConfig, config);
 

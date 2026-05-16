@@ -111,8 +111,10 @@ describe("createOptions", (): void => {
             },
             build: {
                 target: "default",
+                runtime: "node",
                 host: "0.0.0.0",
                 port: 3000,
+                bundle: "external",
                 outputDir: "./dist",
                 outputFile: "index.js",
                 minify: false,
@@ -145,10 +147,52 @@ describe("createOptions", (): void => {
             },
             build: {
                 target: "vercel",
+                runtime: "node",
+                bundle: "external",
                 outputDir: "./dist",
                 outputFile: "api.js",
                 minify: true,
             },
         });
+    });
+
+    it("should enables bundling when bundle option is standalone", (): void => {
+        const project: TempDir = createProject();
+        project.writeFile("src/index.ts");
+
+        const result = createOptions({
+            cwd: project.cwd,
+            build: {
+                bundle: "standalone",
+            },
+        });
+
+        expect(result.build.bundle).toBe("standalone");
+    });
+
+    it("should defaults runtime to node", (): void => {
+        const project: TempDir = createProject();
+        project.writeFile("src/index.ts");
+
+        const result = createOptions({
+            cwd: project.cwd,
+        });
+
+        expect(result.build.runtime).toBe("node");
+    });
+
+    it("should accepts custom runtime when bundling", (): void => {
+        const project: TempDir = createProject();
+        project.writeFile("src/index.ts");
+
+        const result = createOptions({
+            cwd: project.cwd,
+            build: {
+                bundle: "standalone",
+                runtime: "workerd",
+            },
+        });
+
+        expect(result.build.runtime).toBe("workerd");
     });
 });

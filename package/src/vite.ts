@@ -3,6 +3,7 @@
  * @module vite
  */
 
+export type { BundleMode, Runtime } from "#/@types/options/complete";
 export type {
     BuildOptions,
     DevOptions,
