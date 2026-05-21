@@ -38,6 +38,7 @@ const OPTIONS_DEFAULT: Omit<ResolvedVitendOptions, "entry" | "build"> = {
         host: "localhost",
         port: 3001,
     },
+    verbose: false,
 };
 
 const getDefaultOptions = (

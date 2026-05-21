@@ -103,12 +103,15 @@ importers:
 
   package:
     dependencies:
+      consola:
+        specifier: ^3.4.0
+        version: 3.4.2
       es-toolkit:
         specifier: ^1.40.0
         version: 1.43.0
       rolldown-plugin-copy:
-        specifier: ~0.1.1
-        version: 0.1.1(@types/node@25.9.1)(rolldown@1.0.0)
+        specifier: ~0.2.0
+        version: 0.2.0(@types/node@25.9.1)(rolldown@1.0.0)
       srvx:
         specifier: catalog:dep
         version: 0.11.4
@@ -1296,8 +1299,8 @@ packages:
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
-  rolldown-plugin-copy@0.1.1:
-    resolution: {integrity: sha512-agtVrBQkGRfIcNtMrmjafT1xJY2WeAcK7iA3N1kyEkJnB0TDE0jJGhpm8Xb4pQBUfTf1gO2TWTZW7UyZOmL6yg==}
+  rolldown-plugin-copy@0.2.0:
+    resolution: {integrity: sha512-YptSdYzY0FGk4lPzfS3pzIVUbLec3qa+F7xrR6Cj6acg7Qvwn0Q5ayeYjNlRrULm4i86fZ2KEq9VxWp4yx//BQ==}
     peerDependencies:
       '@types/node': '*'
       rolldown: ^1.0.0
@@ -2511,7 +2514,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  rolldown-plugin-copy@0.1.1(@types/node@25.9.1)(rolldown@1.0.0):
+  rolldown-plugin-copy@0.2.0(@types/node@25.9.1)(rolldown@1.0.0):
     dependencies:
       consola: 3.4.2
       es-toolkit: 1.45.1

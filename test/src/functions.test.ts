@@ -100,6 +100,7 @@ describe("createOptions", (): void => {
                 host: "0.0.0.0",
                 copyPublicDir: true,
             },
+            verbose: false,
         });
 
         expect(result).toEqual({
@@ -121,6 +122,7 @@ describe("createOptions", (): void => {
                 publicDir: "./public",
                 copyPublicDir: true,
             },
+            verbose: false,
         });
     });
 
@@ -153,6 +155,7 @@ describe("createOptions", (): void => {
                 outputFile: "api.js",
                 minify: true,
             },
+            verbose: false,
         });
     });
 

@@ -177,17 +177,17 @@ type CompleteVitendOptions = {
      */
     cwd: string;
     /**
-     * The entry file for the application.
-     *
-     * By default, it is `./src/index.ts` or `./src/index.js`.
-     */
-    entry: string;
-    /**
      * Runtime target for the application.
      *
      * By default, it is `node`.
      */
     runtime: Runtime;
+    /**
+     * The entry file for the application.
+     *
+     * By default, it is `./src/index.ts` or `./src/index.js`.
+     */
+    entry: string;
     /**
      * The options for the development server.
      */
@@ -196,6 +196,12 @@ type CompleteVitendOptions = {
      * The options for the production server.
      */
     build: CompleteBuildOptions;
+    /**
+     * Whether to output log messages to the console.
+     *
+     * By default, it is `false`.
+     */
+    verbose: boolean;
 };
 
 export type {

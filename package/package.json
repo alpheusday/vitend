@@ -57,8 +57,9 @@
         "dist"
     ],
     "dependencies": {
+        "consola": "^3.4.0",
         "es-toolkit": "^1.40.0",
-        "rolldown-plugin-copy": "~0.1.1",
+        "rolldown-plugin-copy": "~0.2.0",
         "srvx": "catalog:dep",
         "ts-vista": "~0.2.3"
     },

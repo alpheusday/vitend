@@ -1,3 +1,4 @@
+import type { CopyEvent, Options as CopyOptions } from "rolldown-plugin-copy";
 import type { Plugin } from "vite";
 
 import type { VitendOptions } from "#/@types/options/default";
@@ -10,6 +11,7 @@ import * as Path from "node:path";
 
 import { copy } from "rolldown-plugin-copy";
 
+import { log } from "#/configs/log";
 import { createOptions } from "#/functions/options";
 import { buildPlugin } from "#/vite/build";
 import { devPlugin } from "#/vite/dev";
@@ -37,29 +39,64 @@ const vitend = (options?: VitendOptions): Plugin[] => {
 
     const build: ResolvedBuildOptions = opts.build;
 
-    return [
+    const plugins: Plugin[] = [
         devPlugin({
             ...opts,
         }),
         buildPlugin({
             ...opts,
         }),
-        ...(build.target === "default" && build.copyPublicDir
-            ? ([
-                  copy({
-                      targets: [
-                          {
-                              src: Path.resolve(build.publicDir, "**", "*"),
-                              dest: Path.resolve(
-                                  build.outputDir,
-                                  build.publicDir,
-                              ),
-                          },
-                      ],
-                  }),
-              ] as Plugin[])
-            : []),
     ];
+
+    if (build.target === "default" && build.copyPublicDir) {
+        const copyOptions: CopyOptions = {
+            targets: [
+                {
+                    src: Path.resolve(build.publicDir, "**", "*"),
+                    dest: Path.resolve(build.outputDir, build.publicDir),
+                },
+            ],
+        };
+
+        if (opts.verbose) {
+            copyOptions.onStart = (): void => {
+                console.log("");
+                console.log("");
+            };
+
+            copyOptions.onCopy = (event: CopyEvent): void => {
+                const src: string = Path.relative(opts.cwd, event.target.src);
+
+                const dest: string = Path.relative(opts.cwd, event.target.dest);
+
+                let message: string = `${src} → ${dest}`;
+
+                const flags: string[] = [];
+
+                if (event.target.renamed) {
+                    flags.push("R");
+                }
+
+                if (event.target.transformed) {
+                    flags.push("T");
+                }
+
+                if (flags.length > 0) {
+                    message += ` [${flags.join(",")}]`;
+                }
+
+                log.success(message);
+            };
+
+            copyOptions.onEnd = (): void => {
+                console.log("");
+            };
+        }
+
+        plugins.push(copy(copyOptions) as Plugin);
+    }
+
+    return plugins;
 };
 
 export { vitend };

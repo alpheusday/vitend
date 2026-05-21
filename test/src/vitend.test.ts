@@ -79,4 +79,22 @@ describe("vitend", (): void => {
             "vitend/build",
         ]);
     });
+
+    it("should adds the copy plugin with verbose logging when verbose is enabled", (): void => {
+        const project: TempDir = createProject();
+
+        const plugins: Plugin[] = vitend({
+            cwd: project.cwd,
+            build: {
+                copyPublicDir: true,
+            },
+            verbose: true,
+        });
+
+        expect(plugins.map((plugin: Plugin): string => plugin.name)).toEqual([
+            "vitend/dev",
+            "vitend/build",
+            "rolldown-plugin-copy",
+        ]);
+    });
 });

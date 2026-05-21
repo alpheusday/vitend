@@ -7,6 +7,7 @@ export default defineConfig({
             build: {
                 copyPublicDir: true,
             },
+            verbose: true,
         }),
     ],
 });
