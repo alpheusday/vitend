@@ -68,8 +68,8 @@ importers:
   examples/hono:
     dependencies:
       hono:
-        specifier: ^4.12.22
-        version: 4.12.22
+        specifier: ^4.12.23
+        version: 4.12.23
       vitend:
         specifier: workspace:*
         version: link:../../package
@@ -91,8 +91,8 @@ importers:
   examples/vercel:
     dependencies:
       hono:
-        specifier: ^4.12.22
-        version: 4.12.22
+        specifier: ^4.12.23
+        version: 4.12.23
       vitend:
         specifier: workspace:*
         version: link:../../package
@@ -1014,8 +1014,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hono@4.12.22:
-    resolution: {integrity: sha512-7fvVPbB92zNRsQke+uiRGwtTuef0tB2Dg4hWxYfFNvkQhIltWoyi0ONReM5LWA+jJWS3nfT5lTq+qbsIpX0IQw==}
+  hono@4.12.23:
+    resolution: {integrity: sha512-eIaZ9qDgu7XV0pxOCrg7/WhnQ6Ivm22UcxhXx/A3dcbqbbYgBEkc6e/J/s7j2tS96zoB0S9VBdLwQNCWwUo4LA==}
     engines: {node: '>=16.9.0'}
 
   hookable@6.1.1:
@@ -2175,7 +2175,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono@4.12.22: {}
+  hono@4.12.23: {}
 
   hookable@6.1.1: {}
 
