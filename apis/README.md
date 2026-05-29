@@ -1,6 +1,6 @@
 [< Back](./../README.md)
 
-# vitend v0.3.0
+# vitend v0.4.1
 
 ## Modules
 

@@ -6,7 +6,7 @@
 function vitend(options?): Plugin$1<any>[];
 ```
 
-Defined in: [package/src/vite/vitend.ts:35](https://github.com/alpheusday/vitend/blob/f7bcd28f7a5a16e47ae930fac8863add9dec0214/package/src/vite/vitend.ts#L35)
+Defined in: [package/src/vite/vitend.ts:37](https://github.com/alpheusday/vitend/blob/a809174bccf4d2aa068f95484db3090dbf33634c/package/src/vite/vitend.ts#L37)
 
 The `vitend` plugin.
 
@@ -108,6 +108,22 @@ By default, it is `3001`.
 The entry file for the application.
 
 By default, it is `./src/index.ts` or `./src/index.js`.
+
+#### runtime?
+
+[`Runtime`](../type-aliases/Runtime.md)
+
+Runtime target for the application.
+
+By default, it is `node`.
+
+#### verbose?
+
+`boolean`
+
+Whether to output log messages to the console.
+
+By default, it is `false`.
 
 ## Returns
 

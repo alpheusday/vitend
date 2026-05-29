@@ -8,6 +8,6 @@ type BuildOptions = Format<
 | Pick<CompleteVercelBuildOptions, "target"> & Partial<Omit<CompleteVercelBuildOptions, "target">>>;
 ```
 
-Defined in: [package/src/@types/options/default.ts:31](https://github.com/alpheusday/vitend/blob/f7bcd28f7a5a16e47ae930fac8863add9dec0214/package/src/@types/options/default.ts#L31)
+Defined in: [package/src/@types/options/default.ts:31](https://github.com/alpheusday/vitend/blob/a809174bccf4d2aa068f95484db3090dbf33634c/package/src/@types/options/default.ts#L31)
 
 Build server options.
