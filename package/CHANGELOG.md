@@ -1,3 +1,9 @@
+## Next
+
+### What's Changed
+
+- fix the build error in Windows
+
 ## 0.4.0 (2026-05-22)
 
 ### What's New

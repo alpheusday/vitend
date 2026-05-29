@@ -8,6 +8,7 @@ import type {
 import type { PackageJson } from "#/functions/package-json";
 
 import { builtinModules } from "node:module";
+import * as Path from "node:path";
 
 import { toMerged } from "es-toolkit";
 
@@ -17,6 +18,10 @@ import { getSsrTarget } from "#/functions/ssr";
 const VIRTUAL_ENTRY = "virtual:vitend-entry" as const;
 
 const VIRTUAL_ENTRY_RESOLVED = `\0${VIRTUAL_ENTRY}` as const;
+
+const toPosix = (path: string): string => {
+    return path.split(Path.sep).join(Path.posix.sep);
+};
 
 const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
     const build: ResolvedBuildOptions = opts.build;
@@ -100,7 +105,7 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
 
             let code: string = "";
 
-            code += `import options from "${opts.entry}";`;
+            code += `import options from "${toPosix(opts.entry)}";`;
             code += `import { serve } from "vitend/runtime";`;
 
             // vercel export
@@ -123,10 +128,12 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
 
             if (build.https) {
                 code += `tls: {`;
-                if (build.https.cert) code += `cert: "${build.https.cert}",`;
-                if (build.https.key) code += `key: "${build.https.key}",`;
+                if (build.https.cert)
+                    code += `cert: "${toPosix(build.https.cert)}",`;
+                if (build.https.key)
+                    code += `key: "${toPosix(build.https.key)}",`;
                 if (build.https.passphrase)
-                    code += `passphrase: "${build.https.passphrase}",`;
+                    code += `passphrase: "${toPosix(build.https.passphrase)}",`;
                 code += `},`;
             }
 
@@ -137,4 +144,4 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
     };
 };
 
-export { buildPlugin };
+export { buildPlugin, toPosix };

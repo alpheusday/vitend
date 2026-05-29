@@ -13,7 +13,7 @@ import { builtinModules } from "node:module";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { createTempDir } from "#/helper/temp-dir";
-import { buildPlugin } from "#vitend/vite/build";
+import { buildPlugin, toPosix } from "#vitend/vite/build";
 
 const tempDirs: TempDir[] = [];
 
@@ -171,7 +171,9 @@ describe("buildPlugin", (): void => {
 
         const code = await plugin.load?.("\0virtual:vitend-entry");
 
-        expect(code).toContain(`import options from "${options.entry}";`);
+        expect(code).toContain(
+            `import options from "${toPosix(options.entry)}";`,
+        );
         expect(code).toContain(`import { serve } from "vitend/runtime";`);
         expect(code).toContain("serve({");
         expect(code).toContain("...options,");
@@ -202,7 +204,9 @@ describe("buildPlugin", (): void => {
 
         const code = await plugin.load?.("\0virtual:vitend-entry");
 
-        expect(code).toContain(`import options from "${options.entry}";`);
+        expect(code).toContain(
+            `import options from "${toPosix(options.entry)}";`,
+        );
         expect(code).toContain(`import { serve } from "vitend/runtime";`);
         expect(code).toContain(
             "const server = serve({ ...options, manual: true });",
