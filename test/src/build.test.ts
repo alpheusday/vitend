@@ -13,7 +13,8 @@ import { builtinModules } from "node:module";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { createTempDir } from "#/helper/temp-dir";
-import { buildPlugin, toPosix } from "#vitend/vite/build";
+import { toPosix } from "#vitend/functions/posix";
+import { buildPlugin } from "#vitend/vite/build";
 
 const tempDirs: TempDir[] = [];
 

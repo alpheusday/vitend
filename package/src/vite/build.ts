@@ -8,20 +8,16 @@ import type {
 import type { PackageJson } from "#/functions/package-json";
 
 import { builtinModules } from "node:module";
-import * as Path from "node:path";
 
 import { toMerged } from "es-toolkit";
 
 import { getPackageJson } from "#/functions/package-json";
+import { toPosix } from "#/functions/posix";
 import { getSsrTarget } from "#/functions/ssr";
 
 const VIRTUAL_ENTRY = "virtual:vitend-entry" as const;
 
 const VIRTUAL_ENTRY_RESOLVED = `\0${VIRTUAL_ENTRY}` as const;
-
-const toPosix = (path: string): string => {
-    return path.split(Path.sep).join(Path.posix.sep);
-};
 
 const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
     const build: ResolvedBuildOptions = opts.build;
@@ -144,4 +140,4 @@ const buildPlugin = (opts: ResolvedVitendOptions): Plugin => {
     };
 };
 
-export { buildPlugin, toPosix };
+export { buildPlugin };
