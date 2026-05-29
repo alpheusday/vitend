@@ -52,8 +52,8 @@ const vitend = (options?: VitendOptions): Plugin[] => {
         const copyOptions: CopyOptions = {
             targets: [
                 {
-                    src: Path.resolve(build.publicDir, "**", "*"),
-                    dest: Path.resolve(build.outputDir, build.publicDir),
+                    src: Path.posix.join(build.publicDir, "**", "*"),
+                    dest: Path.posix.join(build.outputDir, build.publicDir),
                 },
             ],
         };

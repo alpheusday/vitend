@@ -2,7 +2,8 @@
 
 ### What's Changed
 
-- fix the build error in Windows
+- fix build error in Windows
+- fix failed copy in Windows
 
 ## 0.4.0 (2026-05-22)
 
