@@ -5,7 +5,7 @@
         "@apst/tsconfig": "~0.3.0",
         "@apst/tsdown": "~0.4.0",
         "@biomejs/biome": "^2.4.16",
-        "@types/node": "^25.9.1",
+        "@types/node": "^25.9.2",
         "rollup": "^4.61.1",
         "tsdown": "~0.22.2",
         "typedoc": "~0.28.19",
