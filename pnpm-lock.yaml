@@ -25,8 +25,8 @@ importers:
         specifier: ~0.3.0
         version: 0.3.0(typescript@6.0.3)
       '@apst/tsdown':
-        specifier: ~0.4.0
-        version: 0.4.0(tsdown@0.22.2(typescript@6.0.3))
+        specifier: ~0.5.0
+        version: 0.5.0(tsdown@0.22.2(typescript@6.0.3))
       '@biomejs/biome':
         specifier: ^2.5.0
         version: 2.5.0
@@ -160,8 +160,8 @@ packages:
       typescript:
         optional: true
 
-  '@apst/tsdown@0.4.0':
-    resolution: {integrity: sha512-oAX02XEau2qwv2v8hPiPgcBDerCnxW326QbRFRc7absSzEWA7pYNCf2jM7SPFqVvVj86CQwYKh2llo7NvaQi2A==}
+  '@apst/tsdown@0.5.0':
+    resolution: {integrity: sha512-y9wJAj5Xz91KEqpgN4D2Ooh+Cg4zIW4cwAt0qlPKNVWPIeCeS/qhyNK9fXf3aBcCQINofgtC9TvK5osSUJs5uQ==}
     peerDependencies:
       tsdown: ~0.21.0 || ~0.22.0
     peerDependenciesMeta:
@@ -1056,6 +1056,9 @@ packages:
   es-toolkit@1.45.1:
     resolution: {integrity: sha512-/jhoOj/Fx+A+IIyDNOvO3TItGmlMKhtX8ISAHKE90c4b/k1tqaqEZ+uUqfpU8DMnW5cgNJv606zS55jGvza0Xw==}
 
+  es-toolkit@1.47.1:
+    resolution: {integrity: sha512-5RAqEwf4P4E17p+W75KLOWw/nOvKZzSQpxM32IpI2KZLaVonjTrZ0Ai5ghMaVI9eKC2p8eoQgcBdkEDgzFk6+Q==}
+
   esbuild@0.25.12:
     resolution: {integrity: sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg==}
     engines: {node: '>=18'}
@@ -1617,9 +1620,9 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
 
-  '@apst/tsdown@0.4.0(tsdown@0.22.2(typescript@6.0.3))':
+  '@apst/tsdown@0.5.0(tsdown@0.22.2(typescript@6.0.3))':
     dependencies:
-      es-toolkit: 1.45.1
+      es-toolkit: 1.47.1
     optionalDependencies:
       tsdown: 0.22.2(typescript@6.0.3)
 
@@ -2242,6 +2245,8 @@ snapshots:
   es-toolkit@1.43.0: {}
 
   es-toolkit@1.45.1: {}
+
+  es-toolkit@1.47.1: {}
 
   esbuild@0.25.12:
     optionalDependencies:
