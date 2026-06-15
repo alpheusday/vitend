@@ -4,7 +4,7 @@
         "@apst/biome": "~0.3.1",
         "@apst/tsconfig": "~0.3.0",
         "@apst/tsdown": "~0.4.0",
-        "@biomejs/biome": "^2.4.16",
+        "@biomejs/biome": "^2.5.0",
         "@types/node": "^25.9.3",
         "rollup": "^4.61.1",
         "tsdown": "~0.22.2",
