@@ -19,8 +19,8 @@ importers:
   .:
     devDependencies:
       '@apst/biome':
-        specifier: ~0.3.1
-        version: 0.3.1(@biomejs/biome@2.5.0)
+        specifier: ~0.3.2
+        version: 0.3.2(@biomejs/biome@2.5.0)
       '@apst/tsconfig':
         specifier: ~0.3.0
         version: 0.3.0(typescript@6.0.3)
@@ -144,8 +144,8 @@ importers:
 
 packages:
 
-  '@apst/biome@0.3.1':
-    resolution: {integrity: sha512-shvIbGtfIBvaeJ5Mn4O4qnZybc3XYthi3ViQfq3TIhscJDYnlZ+RlHGPZigf5rS7lALuwe0jZKvQS+xIGX93+w==}
+  '@apst/biome@0.3.2':
+    resolution: {integrity: sha512-wNH6CySr77KvKVPZo2Ru6VnbGHrdx0T43m53veb2ybOW36W+dTYS6mqpSawjv7/OEXVpXxl2hmoqfBXT3DpUhw==}
     peerDependencies:
       '@biomejs/biome': ^2.0.0
     peerDependenciesMeta:
@@ -1428,6 +1428,7 @@ packages:
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -1612,7 +1613,7 @@ packages:
 
 snapshots:
 
-  '@apst/biome@0.3.1(@biomejs/biome@2.5.0)':
+  '@apst/biome@0.3.2(@biomejs/biome@2.5.0)':
     optionalDependencies:
       '@biomejs/biome': 2.5.0
 
