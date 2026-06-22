@@ -6,7 +6,7 @@
         "@apst/tsdown": "~0.5.0",
         "@biomejs/biome": "^2.5.0",
         "@types/node": "^25.9.3",
-        "rollup": "^4.62.0",
+        "rollup": "^4.62.2",
         "tsdown": "~0.22.3",
         "typedoc": "~0.28.19",
         "typedoc-plugin-markdown": "^4.12.0",
